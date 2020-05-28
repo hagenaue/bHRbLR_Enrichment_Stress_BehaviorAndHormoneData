@@ -83,7 +83,10 @@ colnames(Data)
 # [58] "Sequencing_core_sample_ID"    
 
 
-#Re-naming the variables using concise, consistent names: 
+#Re-naming the variables using concise, consistent names:
+
+##Aside: Angela may want different names as the final labels on figures for the paper - we'll have to deal with that later. 
+##This code just makes it so that we can more easily look at our preliminary graphs and results. 
 
 colnames(Data)[7]<-"Treatment_Group"
 
