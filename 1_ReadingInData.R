@@ -8,7 +8,7 @@
 
 # 1. Reading in Data: 
 
-setwd("~/Documents/Microarray Gen/Angela_HRLR_EE_Stress")
+setwd("C:/Users/Frosty/Desktop/Research/Research during Summer of 2020/R Data/Angela_HRLR_StressEnrichData")
 
 Data<-read.csv("HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_SDScoresFixed_FixedFormatIDs_TimeOnTop.csv", header=T, stringsAsFactors = F)
 #Notes about the dataset:
@@ -145,7 +145,7 @@ colnames(Data)[51]<-"IL6"
 str(Data)
 #'data.frame':	142 obs. of  58 variables:
 
-
+#Sets up Generation, Line, Enrichment, and Social_Defeat as factors.
 Data$Generation<-as.factor(Data$Generation)
 Data$Line<-as.factor(Data$Line)
 Data$Enrichment<-as.factor(Data$Enrichment)
@@ -159,5 +159,6 @@ str(Data)
 # $ Enrichment                                              : Factor w/ 3 levels "EC","EE","NIL": 2 2 2 2 2 2 3 3 3 3 ...
 # $ Social_Defeat                                           : Factor w/ 2 levels "NIL","SD": 1 1 1 1 1 1 2 2 2 2 ...
 
+#Sets up the appropriate reference levels for the "Generation" and "Enrichment" factors
 Data$Generation<-relevel(Data$Generation, ref="F53")
 Data$Enrichment<-relevel(Data$Enrichment, ref="NIL")
