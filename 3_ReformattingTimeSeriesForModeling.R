@@ -76,8 +76,19 @@ str(DefeatDays_LongVersion)
 
 DefeatDays_LongVersion$Day_CenteredOn4<-DefeatDays_LongVersion$Day-3
 
-DefeatDays_LongVersion_VideoRecorded<-DefeatDays_LongVersion[sum(is.na(Submissive_Log2_Matrix[i,]))<3,]
+#Determining which data is from a subject (rat) with at least two days of video recorded social defeat data: 
+#Making a matrix of video recorded data for one of the variables for all social defeat days (columns) for all animals (rows) 
+#It doesn't matter which variable -if the rats have one video-recorded variable, they have all of them
+Submissive_Log2_Matrix<-cbind(Data$DefeatDay1_Submissive_Log2, Data$DefeatDay2_Submissive_Log2, Data$DefeatDay3_Submissive_Log2, Data$DefeatDay4_Submissive_Log2)
 
+#Makes a True/False vector for which animals have at least 3 days of video recorded data
+#Then repeats that vector four times (so that it can be a column in the long version of the matrix, where each of the 4 days worth of social defeat data for any variable is in a single column
+RowsFromAnimalsWithVideoRecordedDefeatData<-rep(apply(Submissive_Log2_Matrix, 1, function(y) sum(is.na(y))<3),4)
+
+#Subsetting:
+DefeatDays_LongVersion_VideoRecorded<-DefeatDays_LongVersion[RowsFromAnimalsWithVideoRecordedDefeatData,]
+                                                      
+                                                      
 DefeatDays_LongVersion_VideoRecorded$Submissive
 
 DefeatDays_LongVersion_OnlyDefeated<-DefeatDays_LongVersion[is.na(DefeatDays_LongVersion$TimeCaged)==F,]
