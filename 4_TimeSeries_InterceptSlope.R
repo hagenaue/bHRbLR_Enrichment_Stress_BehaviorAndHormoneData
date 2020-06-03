@@ -9,11 +9,9 @@ Submissive_Log2_Matrix<-cbind(Data$DefeatDay1_Submissive_Log2, Data$DefeatDay2_S
 str(Submissive_Log2_Matrix)
 #output the combined data
 
+#Creates empty numeric vectors the same length as a column in the data matrix (i.e., length=number of subjects) to store results
 Data$SubmissiveLog2_Intercept<-numeric(length(Submissive_Log2_Matrix[,1]))
-#makes combined data created above numeric
-#rename numeric data for intercept
 Data$SubmissiveLog2_Slope<-numeric(length(Submissive_Log2_Matrix[,1]))
-#rename numeric data for slope
 
 for(i in c(1:length(Submissive_Log2_Matrix[,1]))){
   if(sum(is.na(Submissive_Log2_Matrix[i,]))<3){
@@ -25,13 +23,14 @@ for(i in c(1:length(Submissive_Log2_Matrix[,1]))){
     Data$SubmissiveLog2_Slope[i]<-NA
   }
 }
+#Loops over time series data for all subjects (rats) in the dataset:
 #is.na implies missing values
-#is.na is set equal to false, implying no missing values
-#if there are no missing values in the combined submissive data with log2 
-  ##transformation,then set data to linear model with submissive data as 
+#There needs to be fewer than 3 NA (i.e. at least 2 data points) so that we can fit intercept and slope
+#if this is true:
+  ## then set data to linear model with submissive data as 
   ###dependent variable and defeat day as independent variable
   #Set both the intercept and the slope to the linear model
-#if there are missing values in the combined data for defeat days, 
+#if there are too many missing values in the combined data for defeat days, 
   ##set missing elements to NA (remove from data set)
 
 Aggressive_Log2_Matrix<-cbind(Data$DefeatDay1_Aggressive_Log2, Data$DefeatDay2_Aggressive_Log2, Data$DefeatDay3_Aggressive_Log2, Data$DefeatDay4_Aggressive_Log2)
@@ -48,11 +47,9 @@ FitLine<-lm(Aggressive_Log2_Matrix[7,]~DefeatDay)
 abline(FitLine)
 #add best fit line from linear model through the plot created above
 
-
+#Creates empty numeric vectors the same length as a column in the data matrix (i.e., length=number of subjects) to store results
 Data$AggressiveLog2_Intercept<-numeric(length(Aggressive_Log2_Matrix[,1]))
-#make aggressive intercept data with log2 transformarion numeric and rename
 Data$AggressiveLog2_Slope<-numeric(length(Aggressive_Log2_Matrix[,1]))
-#make aggreeive slope data with log2 transmormation numeric and rename
 
 
 for(i in c(1:length(Aggressive_Log2_Matrix[,1]))){
@@ -65,11 +62,14 @@ for(i in c(1:length(Aggressive_Log2_Matrix[,1]))){
     Data$AggressiveLog2_Slope[i]<-NA
   }
 }
-#if there are no missing values from the combined aggressive data with 
-  ##log2 trasformation, then set data to linear model with aggressive data 
+#Loops over time series data for all subjects (rats) in the dataset:
+#is.na implies missing values
+#There needs to be fewer than 3 NA (i.e. at least 2 data points) so that we can fit intercept and slope
+#if this is true:
+  ## then set data to linear model with aggressive data 
   ###as dependent variable and defeat day as independent variable
   #Set intercept and slope to linear model
-#if there are missing values from the data, remove the missing values
+#if there are too many missing values from the data, make output to NA
 
 Data$AggressiveLog2_Intercept
 #view aggressive log2 intercept data; missing values = NA
@@ -95,10 +95,9 @@ FitLine[[1]][1]
 FitLine[[1]][2]
 #get slope 
 
+#Creates empty numeric vectors the same length as a column in the data matrix (i.e., length=number of subjects) to store results
 Data$Submissive_Intercept<-numeric(length(Submissive_Matrix[,1]))
-#set submissive intercept data as numeric and rename
 Data$Submissive_Slope<-numeric(length(Submissive_Matrix[,1]))
-#set submissive slope data as numeric and rename
 
 for(i in c(1:length(Submissive_Matrix[,1]))){
   if(sum(is.na(Submissive_Matrix[i,]))<3){
@@ -110,11 +109,14 @@ for(i in c(1:length(Submissive_Matrix[,1]))){
     Data$Submissive_Slope[i]<-NA
   }
 }
-#if there are no missing values from the combined submissive data, then 
+#Loops over time series data for all subjects (rats) in the dataset:
+#is.na implies missing values
+#There needs to be fewer than 3 NA (i.e. at least 2 data points) so that we can fit intercept and slope
+#if this is true:
   ##set data to linear model with submissive data as dependent variable
   ###and defeat day as independent variable
   #Set both the intercept and slope data to the linear model
-#if there are missing values from the data, remove them
+#if there are too many missing values from the data, set output to NA
 
 Data$Submissive_Intercept
 #Get intercept data; missing values = NA
@@ -139,10 +141,9 @@ FitLine[[1]][1]
 FitLine[[1]][2]
 #Get slope
 
+#Creates empty numeric vectors the same length as a column in the data matrix (i.e., length=number of subjects) to store results
 Data$Aggressive_Intercept<-numeric(length(Aggressive_Matrix[,1]))
-#make agressive intercept data numeric and rename
 Data$Aggressive_Slope<-numeric(length(Aggressive_Matrix[,1]))
-#make agressive slope data numeric and rename
 
 for(i in c(1:length(Aggressive_Matrix[,1]))){
   if(sum(is.na(Aggressive_Matrix[i,]))<3){
@@ -154,11 +155,14 @@ for(i in c(1:length(Aggressive_Matrix[,1]))){
     Data$Aggressive_Slope[i]<-NA
   }
 }
-#if there are no missing values from the combined agressive data, then 
-  ##set data to linear model with agressive data as dependent variable
+#Loops over time series data for all subjects (rats) in the dataset:
+#is.na implies missing values
+#There needs to be fewer than 3 NA (i.e. at least 2 data points) so that we can fit intercept and slope
+#if this is true:
+###linear model with agressive data as dependent variable
   ###and defeat day as independent variable
   #Set both the intercept and slope data to the linear model
-#if there are missing values from the data, remove them
+#if there are too many missing values from the data, set output to NA
 
 Data$Aggressive_Intercept
 #get agressive intercept data; missing values = NA
@@ -183,10 +187,9 @@ FitLine[[1]][1]
 FitLine[[1]][2]
 #get slope
 
+#Creates empty numeric vectors the same length as a column in the data matrix (i.e., length=number of subjects) to store results
 Data$OtherBehavior_Intercept<-numeric(length(OtherBehavior_Matrix[,1]))
-#make other behavior intercept data numeric and rename
 Data$OtherBehavior_Slope<-numeric(length(OtherBehavior_Matrix[,1]))
-#make other behavior slope data numeric and rename
 
 for(i in c(1:length(OtherBehavior_Matrix[,1]))){
   if(sum(is.na(OtherBehavior_Matrix[i,]))<3){
@@ -198,11 +201,14 @@ for(i in c(1:length(OtherBehavior_Matrix[,1]))){
     Data$OtherBehavior_Slope[i]<-NA
   }
 }
-#if there are no missing values from the combined other behavior data, then 
+#Loops over time series data for all subjects (rats) in the dataset:
+#is.na implies missing values
+#There needs to be fewer than 3 NA (i.e. at least 2 data points) so that we can fit intercept and slope
+#if this is true:
   ##set data to linear model with other behavior data as dependent variable
   ###and defeat day as independent variable
   #Set both the intercept and slope data to the linear model
-#if there are missing values from the data, remove them
+#if there are too many missing values from the data, make output NA
 
 Data$OtherBehavior_Intercept
 #get intercept data, missing values = NA
@@ -227,10 +233,9 @@ FitLine[[1]][1]
 FitLine[[1]][2]
 #get slope
 
+#Creates empty numeric vectors the same length as a column in the data matrix (i.e., length=number of subjects) to store results
 Data$TimeCaged_Intercept<-numeric(length(TimeCaged_Matrix[,1]))
-#make time caged intercept data numeric and rename
 Data$TimeCaged_Slope<-numeric(length(TimeCaged_Matrix[,1]))
-#make time caged slope data numeric and rename
 
 for(i in c(1:length(TimeCaged_Matrix[,1]))){
   if(sum(is.na(TimeCaged_Matrix[i,]))<3){
@@ -242,11 +247,14 @@ for(i in c(1:length(TimeCaged_Matrix[,1]))){
     Data$TimeCaged_Slope[i]<-NA
   }
 }
-#if there are no missing values from the combined time caged data, then 
+#Loops over time series data for all subjects (rats) in the dataset:
+#is.na implies missing values
+#There needs to be fewer than 3 NA (i.e. at least 2 data points) so that we can fit intercept and slope
+#if this is true:
   ##set data to linear model with time caged data as dependent variable
   ###and defeat day as independent variable
   #Set both the intercept and slope data to the linear model
-#if there are missing values from the data, remove them
+#if there are too many missing values from the data, make output NA
 
 Data$TimeCaged_Intercept
 #get time caged intercept data; missing values = NA
@@ -272,10 +280,9 @@ FitLine[[1]][1]
 FitLine[[1]][2]
 #get slope
 
+#Creates empty numeric vectors the same length as a column in the data matrix (i.e., length=number of subjects) to store results
 Data$DefeatScore_Intercept<-numeric(length(DefeatScore_Matrix[,1]))
-#set defeat score intercept data as numeric and rename
 Data$DefeatScore_Slope<-numeric(length(DefeatScore_Matrix[,1]))
-#set defeat score slope data as numeric and rename
 
 for(i in c(1:length(DefeatScore_Matrix[,1]))){
     if(sum(is.na(DefeatScore_Matrix[i,]))<3){
@@ -287,11 +294,14 @@ for(i in c(1:length(DefeatScore_Matrix[,1]))){
     Data$DefeatScore_Slope[i]<-NA
   }
 }
-#if there are no missing values from the combined defeat score data, then 
+#Loops over time series data for all subjects (rats) in the dataset:
+#is.na implies missing values
+#There needs to be fewer than 3 NA (i.e. at least 2 data points) so that we can fit intercept and slope
+#if this is true:
   ##set data to linear model with defeat score data as dependent variable
   ###and defeat day as independent variable
   #Set both the intercept and slope data to the linear model
-#if there are missing values from the data, remove them
+#if there are too many missing values from the data, make output NA
 
 Data$DefeatScore_Intercept
 #get defeat score intercept data; missing values = NA
