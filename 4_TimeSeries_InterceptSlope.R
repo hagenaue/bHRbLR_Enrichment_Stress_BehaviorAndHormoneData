@@ -16,7 +16,7 @@ Data$SubmissiveLog2_Slope<-numeric(length(Submissive_Log2_Matrix[,1]))
 #rename numeric data for slope
 
 for(i in c(1:length(Submissive_Log2_Matrix[,1]))){
-  if(is.na(Submissive_Log2_Matrix[i,1])==F){
+  if(sum(is.na(Submissive_Log2_Matrix[i,]))<3){
     FitLine<-lm(Submissive_Log2_Matrix[i,]~DefeatDay)
     Data$SubmissiveLog2_Intercept[i]<-FitLine[[1]][[1]]
     Data$SubmissiveLog2_Slope[i]<-FitLine[[1]][[2]]
@@ -56,7 +56,7 @@ Data$AggressiveLog2_Slope<-numeric(length(Aggressive_Log2_Matrix[,1]))
 
 
 for(i in c(1:length(Aggressive_Log2_Matrix[,1]))){
-  if(is.na(Aggressive_Log2_Matrix[i,1])==F){
+  if(sum(is.na(Aggressive_Log2_Matrix[i,]))<3){
     FitLine<-lm(Aggressive_Log2_Matrix[i,]~DefeatDay)
     Data$AggressiveLog2_Intercept[i]<-FitLine[[1]][[1]]
     Data$AggressiveLog2_Slope[i]<-FitLine[[1]][[2]]
@@ -101,7 +101,7 @@ Data$Submissive_Slope<-numeric(length(Submissive_Matrix[,1]))
 #set submissive slope data as numeric and rename
 
 for(i in c(1:length(Submissive_Matrix[,1]))){
-  if(is.na(Submissive_Matrix[i,1])==F){
+  if(sum(is.na(Submissive_Matrix[i,]))<3){
     FitLine<-lm(Submissive_Matrix[i,]~DefeatDay)
     Data$Submissive_Intercept[i]<-FitLine[[1]][[1]]
     Data$Submissive_Slope[i]<-FitLine[[1]][[2]]
@@ -145,7 +145,7 @@ Data$Aggressive_Slope<-numeric(length(Aggressive_Matrix[,1]))
 #make agressive slope data numeric and rename
 
 for(i in c(1:length(Aggressive_Matrix[,1]))){
-  if(is.na(Aggressive_Matrix[i,1])==F){
+  if(sum(is.na(Aggressive_Matrix[i,]))<3){
     FitLine<-lm(Aggressive_Matrix[i,]~DefeatDay)
     Data$Aggressive_Intercept[i]<-FitLine[[1]][[1]]
     Data$Aggressive_Slope[i]<-FitLine[[1]][[2]]
@@ -189,7 +189,7 @@ Data$OtherBehavior_Slope<-numeric(length(OtherBehavior_Matrix[,1]))
 #make other behavior slope data numeric and rename
 
 for(i in c(1:length(OtherBehavior_Matrix[,1]))){
-  if(is.na(OtherBehavior_Matrix[i,1])==F){
+  if(sum(is.na(OtherBehavior_Matrix[i,]))<3){
     FitLine<-lm(OtherBehavior_Matrix[i,]~DefeatDay)
     Data$OtherBehavior_Intercept[i]<-FitLine[[1]][[1]]
     Data$OtherBehavior_Slope[i]<-FitLine[[1]][[2]]
@@ -233,7 +233,7 @@ Data$TimeCaged_Slope<-numeric(length(TimeCaged_Matrix[,1]))
 #make time caged slope data numeric and rename
 
 for(i in c(1:length(TimeCaged_Matrix[,1]))){
-  if(is.na(TimeCaged_Matrix[i,1])==F){
+  if(sum(is.na(TimeCaged_Matrix[i,]))<3){
     FitLine<-lm(TimeCaged_Matrix[i,]~DefeatDay)
     Data$TimeCaged_Intercept[i]<-FitLine[[1]][[1]]
     Data$TimeCaged_Slope[i]<-FitLine[[1]][[2]]
@@ -278,7 +278,7 @@ Data$DefeatScore_Slope<-numeric(length(DefeatScore_Matrix[,1]))
 #set defeat score slope data as numeric and rename
 
 for(i in c(1:length(DefeatScore_Matrix[,1]))){
-  if(is.na(DefeatScore_Matrix[i,1])==F){
+    if(sum(is.na(DefeatScore_Matrix[i,]))<3){
     FitLine<-lm(DefeatScore_Matrix[i,]~DefeatDay)
     Data$DefeatScore_Intercept[i]<-FitLine[[1]][[1]]
     Data$DefeatScore_Slope[i]<-FitLine[[1]][[2]]
