@@ -1,7 +1,24 @@
 #For analysis purposes, it might be helpful to set the intercept as Day4, since we are missing Day4 information for some individuals and that day is most likely to reflect the cumulative effects of social defeat.
 DefeatDay<-c(-3,-2,-1,0)
 
-#Fitting an intercept and slope to the time series data:
+#********************************
+
+#Time Series Data: Submissive_Log2
+
+#A quick illustration of what a line (intercept & slope) fit to the time series data for an individual rat looks like:
+plot(Submissive_Log2_Matrix[7,]~DefeatDay)
+#plot defeat day on x axis and submissive data on y axis with log2 transformation, 2 points
+FitLine<-lm(Submissive_Log2_Matrix[7,]~DefeatDay)
+#set linear model for submissive data with log2 transformation as 
+  ##dependent and defeat day as independent variable
+abline(FitLine)
+#add best fit line from linear model through the plot created above
+FitLine[[1]][1]
+#get intercept
+FitLine[[1]][2]
+#get slope 
+
+#Actual code fitting an intercept and slope to the time series data for each individual subject (rat):
 
 Submissive_Log2_Matrix<-cbind(Data$DefeatDay1_Submissive_Log2, Data$DefeatDay2_Submissive_Log2, Data$DefeatDay3_Submissive_Log2, Data$DefeatDay4_Submissive_Log2)
 #cbind = combine defeat day data for submissive data with log2 transformation
@@ -33,19 +50,15 @@ for(i in c(1:length(Submissive_Log2_Matrix[,1]))){
 #if there are too many missing values in the combined data for defeat days, 
   ##set missing elements to NA (remove from data set)
 
+#********************************
+
+#Time Series Data: Aggressive_Log2
+
 Aggressive_Log2_Matrix<-cbind(Data$DefeatDay1_Aggressive_Log2, Data$DefeatDay2_Aggressive_Log2, Data$DefeatDay3_Aggressive_Log2, Data$DefeatDay4_Aggressive_Log2)
 #combine defeat days for aggressive data with log2 transformation
 str(Aggressive_Log2_Matrix)
 DefeatDay<-c(-3,-2,-1,0)
 #set DefeatDay as vector
-
-plot(Aggressive_Log2_Matrix[7,]~DefeatDay)
-#plot defeat day on x axis and agressive data on y axis with log2 transformation, 2 points
-FitLine<-lm(Aggressive_Log2_Matrix[7,]~DefeatDay)
-#set linear model for aggressive data with log2 transformation as 
-  ##dependent and defeat day as independent variable
-abline(FitLine)
-#add best fit line from linear model through the plot created above
 
 #Creates empty numeric vectors the same length as a column in the data matrix (i.e., length=number of subjects) to store results
 Data$AggressiveLog2_Intercept<-numeric(length(Aggressive_Log2_Matrix[,1]))
@@ -76,24 +89,13 @@ Data$AggressiveLog2_Intercept
 Data$AggressiveLog2_Slope
 #view aggressive log2 slope data; missing values = NA
 
+#********************************
+
+#Time Series Data: Submissive
 
 Submissive_Matrix<-cbind(Data$DefeatDay1_Submissive, Data$DefeatDay2_Submissive, Data$DefeatDay3_Submissive, Data$DefeatDay4_Submissive)
 #combine defeat day data for submissive data WITHOUT log transformation
 str(Submissive_Matrix)
-DefeatDay<-c(-3,-2,-1,0)
-#set DefeatDay as vector
-
-plot(Submissive_Matrix[7,]~DefeatDay)
-#plot submissive data on y axis and defeat day on x axis, 3 points
-FitLine<-lm(Submissive_Matrix[7,]~DefeatDay)
-#set susbmissive data to linear model with defeat day as independent 
-  ##variable and submissive data as dependent variable
-abline(FitLine)
-#add best fit line from linear model to plot created above
-FitLine[[1]][1]
-#get intercept
-FitLine[[1]][2]
-#get slope 
 
 #Creates empty numeric vectors the same length as a column in the data matrix (i.e., length=number of subjects) to store results
 Data$Submissive_Intercept<-numeric(length(Submissive_Matrix[,1]))
@@ -123,23 +125,13 @@ Data$Submissive_Intercept
 Data$Submissive_Slope
 #Get slope data; missing values = NA
 
+#********************************
+
+#Time Series Data: Aggressive
+
 Aggressive_Matrix<-cbind(Data$DefeatDay1_Aggressive, Data$DefeatDay2_Aggressive, Data$DefeatDay3_Aggressive, Data$DefeatDay4_Aggressive)
 #combine defeat days for aggressive data WITHOUT log transformation
 str(Aggressive_Matrix)
-DefeatDay<-c(-3,-2,-1,0)
-#set DefeatDay as vector
-
-plot(Aggressive_Matrix[7,]~DefeatDay)
-#plot agressive data on y axis and defeat day on x axis, 3 points
-FitLine<-lm(Aggressive_Matrix[7,]~DefeatDay)
-#set data to linear model with aggressive data as dependent variable and
-  ##defeat day as independent variable
-abline(FitLine)
-#add best fit line from linear model to plot created above
-FitLine[[1]][1]
-#Get intercept
-FitLine[[1]][2]
-#Get slope
 
 #Creates empty numeric vectors the same length as a column in the data matrix (i.e., length=number of subjects) to store results
 Data$Aggressive_Intercept<-numeric(length(Aggressive_Matrix[,1]))
@@ -169,23 +161,13 @@ Data$Aggressive_Intercept
 Data$Aggressive_Slope
 #get agressive slope data; missing values = NA
 
+#********************************
+
+#Time Series Data: OtherBehavior
+
 OtherBehavior_Matrix<-cbind(Data$DefeatDay1_OtherBehavior, Data$DefeatDay2_OtherBehavior, Data$DefeatDay3_OtherBehavior, Data$DefeatDay4_OtherBehavior)
 #combine defeat days for other behavior data
 str(OtherBehavior_Matrix)
-DefeatDay<-c(-3,-2,-1,0)
-#make DefeatDay a vector
-
-plot(OtherBehavior_Matrix[7,]~DefeatDay)
-#plot other behavior data on y axis and defeat days on x axis, 3 points
-FitLine<-lm(OtherBehavior_Matrix[7,]~DefeatDay)
-#set data to linear model with other behavior data as dependent variable
-  ##and defeat days as independent variable
-abline(FitLine)
-#add line of best fit from linear model to plot created above
-FitLine[[1]][1]
-#get intercept
-FitLine[[1]][2]
-#get slope
 
 #Creates empty numeric vectors the same length as a column in the data matrix (i.e., length=number of subjects) to store results
 Data$OtherBehavior_Intercept<-numeric(length(OtherBehavior_Matrix[,1]))
@@ -215,23 +197,13 @@ Data$OtherBehavior_Intercept
 Data$OtherBehavior_Slope
 #get slope data, missing values = NA
 
+#********************************
+
+#Time Series Data: TimeCaged
+
 TimeCaged_Matrix<-cbind(Data$DefeatDay1_TimeCaged, Data$DefeatDay2_TimeCaged, Data$DefeatDay3_TimeCaged, Data$DefeatDay4_TimeCaged)
 #combine defeat days for time caged data and rename
 str(TimeCaged_Matrix)
-DefeatDay<-c(-3,-2,-1,0)
-#set defeat day as vector
-
-plot(TimeCaged_Matrix[7,]~DefeatDay)
-#plot time caged data on y axis and defeat days on x axis, 4 points
-FitLine<-lm(TimeCaged_Matrix[7,]~DefeatDay)
-#set data to linear model with time caged data as dependent variable
-  ##and defeat day as independent variable
-abline(FitLine)
-#add best fit line from linear model to plot created above
-FitLine[[1]][1]
-#get intercept
-FitLine[[1]][2]
-#get slope
 
 #Creates empty numeric vectors the same length as a column in the data matrix (i.e., length=number of subjects) to store results
 Data$TimeCaged_Intercept<-numeric(length(TimeCaged_Matrix[,1]))
@@ -261,24 +233,13 @@ Data$TimeCaged_Intercept
 Data$TimeCaged_Slope
 #get time caged slope data; missing values = NA
 
+#********************************
+
+#Time Series Data: DefeatScore
+
 DefeatScore_Matrix<-cbind(Data$DefeatDay1_DefeatScore, Data$DefeatDay2_DefeatScore, Data$DefeatDay3_DefeatScore, Data$DefeatDay4_DefeatScore)
 #combine defeat days for defeat score data and rename
 str(DefeatScore_Matrix)
-DefeatDay<-c(-3,-2,-1,0)
-#make DefeatDay a vector
-
-plot(DefeatScore_Matrix[7,]~DefeatDay)
-#plot defeat score data on y axis and defeat day on x axis, 4 points
-##first 3 points very linear near 4.0, last point drastically different near 2.0
-FitLine<-lm(DefeatScore_Matrix[7,]~DefeatDay)
-#create linear model with defeat score as dependent variable and defeat
-  ##day as independent variable
-abline(FitLine)
-#add best fit line from linear model to plot created above
-FitLine[[1]][1]
-#get intercept
-FitLine[[1]][2]
-#get slope
 
 #Creates empty numeric vectors the same length as a column in the data matrix (i.e., length=number of subjects) to store results
 Data$DefeatScore_Intercept<-numeric(length(DefeatScore_Matrix[,1]))
