@@ -1,7 +1,7 @@
 #Liam's functionalized version of TimeSeriesPlots
 
 #Starts the graphics device driver for producing the graphs in a pdf
-pdf("Functionalized Output for AggressiveBehavior_Log2_vs_DefeatDay_ByGen.pdf", height=12, width=8.5)
+pdf("AggressiveBehavior_Log2_vs_DefeatDay_ByGen.pdf", height=12, width=8.5)
 
 #Sets up the graphical parameters for the graphs. 
 #mfrow causes subsequent figures to be drawn in an nr-by-nc array by rows [the array is specified using c(3,2)].
