@@ -10,10 +10,11 @@ str(Submissive_Log2_Matrix)
 #output the combined data
 
 Data$SubmissiveLog2_Intercept<-numeric(length(Submissive_Log2_Matrix[,1]))
-#makes combined data created above numeric
+#makes combined data created above numeric vector
 #rename numeric data for intercept
 Data$SubmissiveLog2_Slope<-numeric(length(Submissive_Log2_Matrix[,1]))
 #rename numeric data for slope
+#sets length of vector
 
 for(i in c(1:length(Submissive_Log2_Matrix[,1]))){
   if(is.na(Submissive_Log2_Matrix[i,1])==F){
@@ -33,6 +34,8 @@ for(i in c(1:length(Submissive_Log2_Matrix[,1]))){
   #Set both the intercept and the slope to the linear model
 #if there are missing values in the combined data for defeat days, 
   ##set missing elements to NA (remove from data set)
+#for loop runs the if else function for each value within the vector
+  ##of submissive data with log2 transformation
 
 Aggressive_Log2_Matrix<-cbind(Data$DefeatDay1_Aggressive_Log2, Data$DefeatDay2_Aggressive_Log2, Data$DefeatDay3_Aggressive_Log2, Data$DefeatDay4_Aggressive_Log2)
 #combine defeat days for aggressive data with log2 transformation
@@ -50,9 +53,9 @@ abline(FitLine)
 
 
 Data$AggressiveLog2_Intercept<-numeric(length(Aggressive_Log2_Matrix[,1]))
-#make aggressive intercept data with log2 transformarion numeric and rename
+#make aggressive intercept data with log2 transformarion numeric vector and rename
 Data$AggressiveLog2_Slope<-numeric(length(Aggressive_Log2_Matrix[,1]))
-#make aggreeive slope data with log2 transmormation numeric and rename
+#make aggreeive slope data with log2 transmormation numeric vector and rename
 
 
 for(i in c(1:length(Aggressive_Log2_Matrix[,1]))){
@@ -70,6 +73,8 @@ for(i in c(1:length(Aggressive_Log2_Matrix[,1]))){
   ###as dependent variable and defeat day as independent variable
   #Set intercept and slope to linear model
 #if there are missing values from the data, remove the missing values
+#for loop runs the if else function for each value within the vector
+  ##of aggressive data with log2 transformation
 
 Data$AggressiveLog2_Intercept
 #view aggressive log2 intercept data; missing values = NA
@@ -96,9 +101,9 @@ FitLine[[1]][2]
 #get slope 
 
 Data$Submissive_Intercept<-numeric(length(Submissive_Matrix[,1]))
-#set submissive intercept data as numeric and rename
+#set submissive intercept data as numeric vector and rename
 Data$Submissive_Slope<-numeric(length(Submissive_Matrix[,1]))
-#set submissive slope data as numeric and rename
+#set submissive slope data as numeric vector and rename
 
 for(i in c(1:length(Submissive_Matrix[,1]))){
   if(is.na(Submissive_Matrix[i,1])==F){
@@ -115,6 +120,8 @@ for(i in c(1:length(Submissive_Matrix[,1]))){
   ###and defeat day as independent variable
   #Set both the intercept and slope data to the linear model
 #if there are missing values from the data, remove them
+#for loop runs the if else function for each value within the vector
+  ##of submissive data
 
 Data$Submissive_Intercept
 #Get intercept data; missing values = NA
@@ -140,9 +147,9 @@ FitLine[[1]][2]
 #Get slope
 
 Data$Aggressive_Intercept<-numeric(length(Aggressive_Matrix[,1]))
-#make agressive intercept data numeric and rename
+#make agressive intercept data numeric vector and rename
 Data$Aggressive_Slope<-numeric(length(Aggressive_Matrix[,1]))
-#make agressive slope data numeric and rename
+#make agressive slope data numeric vector and rename
 
 for(i in c(1:length(Aggressive_Matrix[,1]))){
   if(is.na(Aggressive_Matrix[i,1])==F){
@@ -159,6 +166,8 @@ for(i in c(1:length(Aggressive_Matrix[,1]))){
   ###and defeat day as independent variable
   #Set both the intercept and slope data to the linear model
 #if there are missing values from the data, remove them
+#for loop runs the if else function for each value within the vector
+  ##of aggressive data
 
 Data$Aggressive_Intercept
 #get agressive intercept data; missing values = NA
@@ -184,9 +193,9 @@ FitLine[[1]][2]
 #get slope
 
 Data$OtherBehavior_Intercept<-numeric(length(OtherBehavior_Matrix[,1]))
-#make other behavior intercept data numeric and rename
+#make other behavior intercept data numeric vector and rename
 Data$OtherBehavior_Slope<-numeric(length(OtherBehavior_Matrix[,1]))
-#make other behavior slope data numeric and rename
+#make other behavior slope data numeric vector and rename
 
 for(i in c(1:length(OtherBehavior_Matrix[,1]))){
   if(is.na(OtherBehavior_Matrix[i,1])==F){
@@ -203,6 +212,8 @@ for(i in c(1:length(OtherBehavior_Matrix[,1]))){
   ###and defeat day as independent variable
   #Set both the intercept and slope data to the linear model
 #if there are missing values from the data, remove them
+#for loop runs the if else function for each value within the vector
+  ##of other behvaior data
 
 Data$OtherBehavior_Intercept
 #get intercept data, missing values = NA
