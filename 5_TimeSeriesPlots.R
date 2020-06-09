@@ -35,7 +35,7 @@ plot_time_series_panel <- function(treatment_group) {
   #Takes the data from the specified treatment group in Aggressive_Log2_Matrix and assigns it to Temp. 
   Temp<-Aggressive_Log2_Matrix[Data$Treatment_Group==treatment_group,]
   #Creates the character vector "TempGen" from from the specified treatment group generations.
-  TempGen<-as.character(Data$Generation[Data$Treatment_Group=="LR NIL + SD"])
+  TempGen<-as.character(Data$Generation[Data$Treatment_Group==treatment_group])
   
   #Relabels the generations in TempGen according to their line (LR = red; HR = green)
   if(substring(treatment_group, 1, 2) == "LR") {
