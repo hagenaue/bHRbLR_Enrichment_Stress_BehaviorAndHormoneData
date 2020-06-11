@@ -1,3 +1,10 @@
+
+#Social Defeat Time Series variables to loop over (once the plotting function is done):
+TimeSeriesVariables_Matrices<-list(Aggressive_Matrix, Aggressive_Log2_Matrix, Submissive_Matrix, Submissive_Log2_Matrix, OtherBehavior_Matrix, DefeatScore_Matrix, TimeCaged_Matrix)
+TimeSeriesVariables_Names<-c("Aggressive Behavior", "Aggressive Behavior (Log2)", "Submissive Behavior", "Submissive Behavior (Log2)", "Other Behavior", "Defeat Score", "Time Caged") 
+TimeSeriesVariables_Intercepts<-cbind(Data$Aggressive_Intercept, Data$AggressiveLog2_Intercept, Data$Submissive_Intercept, Data$SubmissiveLog2_Intercept, Data$OtherBehavior_Intercept,Data$DefeatScore_Intercept, Data$TimeCaged_Intercept)
+TimeSeriesVariables_Slopes<-cbind(Data$Aggressive_Slope, Data$AggressiveLog2_Slope, Data$Submissive_Slope, Data$SubmissiveLog2_Slope, Data$OtherBehavior_Slope,Data$DefeatScore_Slope, Data$TimeCaged_Slope)
+
 #Liam's functionalized version of TimeSeriesPlots
 
 #Starts the graphics device driver for producing the graphs in a pdf
