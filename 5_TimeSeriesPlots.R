@@ -31,7 +31,7 @@ plot(Temp[9,]~DefeatDay, ylab="Aggressive Behavior (Log2)", xlab="Defeat Day (in
   #FitLine is assigned the value of lm(Temp[i,]~DefeatDay), which is a function used to fit linear models (specifically, in this case, to fit a linear model using the data in Temp according to DefeatDay)
   #abline() adds straight lines to the plot. In this case, it uses FitLine to provide the coefficients (Intercept and DefeatDay). It assigns colors to the lines based on the colors listed in TempGen ("red2", etc).
 for(i in c(1:length(Temp[,1]))){
-  if(is.na(Temp[i,])==F){
+  if(sum(is.na(Temp[i,]))<3){
     lines(Temp[i,]~DefeatDay, type="o", col="grey")
     FitLine<-lm(Temp[i,]~DefeatDay)
     abline(FitLine, col=TempGen[i])}else{}
@@ -51,7 +51,7 @@ TempGen[TempGen=="F56"]<-"green3"
 plot(Temp[1,]~DefeatDay, ylab="Aggressive Behavior (Log2)", xlab="Defeat Day (intercept=Day4)", main="HR NIL + SD", ylim=c(min(cbind(Data$AggressiveLog2_Intercept,Aggressive_Log2_Matrix), na.rm=T), max(cbind(Data$AggressiveLog2_Intercept,Aggressive_Log2_Matrix), na.rm=T)))
 
 for(i in c(1:length(Temp[,1]))){
-  if(is.na(Temp[i,])==F){
+  if(sum(is.na(Temp[i,]))<3){
     lines(Temp[i,]~DefeatDay, type="o", col="grey")
     FitLine<-lm(Temp[i,]~DefeatDay)
     abline(FitLine, col=TempGen[i])}else{}
@@ -69,7 +69,7 @@ TempGen[TempGen=="F56"]<-"red3"
 plot(Temp[4,]~DefeatDay, ylab="Aggressive Behavior (Log2)", xlab="Defeat Day (intercept=Day4)", main="LR EC + SD", ylim=c(min(cbind(Data$AggressiveLog2_Intercept,Aggressive_Log2_Matrix), na.rm=T), max(cbind(Data$AggressiveLog2_Intercept,Aggressive_Log2_Matrix), na.rm=T)))
 
 for(i in c(1:length(Temp[,1]))){
-  if(is.na(Temp[i,])==F){
+  if(sum(is.na(Temp[i,]))<3){
     lines(Temp[i,]~DefeatDay, type="o", col="grey")
     FitLine<-lm(Temp[i,]~DefeatDay)
     abline(FitLine, col=TempGen[i])}else{}
@@ -87,7 +87,7 @@ TempGen[TempGen=="F56"]<-"green3"
 plot(Temp[1,]~DefeatDay, ylab="Aggressive Behavior (Log2)", xlab="Defeat Day (intercept=Day4)", main="HR EC + SD", ylim=c(min(cbind(Data$AggressiveLog2_Intercept,Aggressive_Log2_Matrix), na.rm=T), max(cbind(Data$AggressiveLog2_Intercept,Aggressive_Log2_Matrix), na.rm=T)))
 
 for(i in c(1:length(Temp[,1]))){
-  if(is.na(Temp[i,])==F){
+  if(sum(is.na(Temp[i,]))<3){
     lines(Temp[i,]~DefeatDay, type="o", col="grey")
     FitLine<-lm(Temp[i,]~DefeatDay)
     abline(FitLine, col=TempGen[i])}else{}
@@ -105,7 +105,7 @@ TempGen[TempGen=="F56"]<-"red3"
 plot(Temp[6,]~DefeatDay, ylab="Aggressive Behavior (Log2)", xlab="Defeat Day (intercept=Day4)", main="LR EE + SD", ylim=c(min(cbind(Data$AggressiveLog2_Intercept,Aggressive_Log2_Matrix), na.rm=T), max(cbind(Data$AggressiveLog2_Intercept,Aggressive_Log2_Matrix), na.rm=T)))
 
 for(i in c(1:length(Temp[,1]))){
-  if(is.na(Temp[i,])==F){
+  if(sum(is.na(Temp[i,]))<3){
     lines(Temp[i,]~DefeatDay, type="o", col="grey")
     FitLine<-lm(Temp[i,]~DefeatDay)
     abline(FitLine, col=TempGen[i])}else{}
@@ -123,7 +123,7 @@ TempGen[TempGen=="F56"]<-"green3"
 plot(Temp[4,]~DefeatDay, ylab="Aggressive Behavior (Log2)", xlab="Defeat Day (intercept=Day4)", main="HR EE + SD", ylim=c(min(cbind(Data$AggressiveLog2_Intercept,Aggressive_Log2_Matrix), na.rm=T), max(cbind(Data$AggressiveLog2_Intercept,Aggressive_Log2_Matrix), na.rm=T)))
 
 for(i in c(1:length(Temp[,1]))){
-  if(is.na(Temp[i,])==F){
+  if(sum(is.na(Temp[i,]))<3){
     lines(Temp[i,]~DefeatDay, type="o", col="grey")
     FitLine<-lm(Temp[i,]~DefeatDay)
     abline(FitLine, col=TempGen[i])}else{}

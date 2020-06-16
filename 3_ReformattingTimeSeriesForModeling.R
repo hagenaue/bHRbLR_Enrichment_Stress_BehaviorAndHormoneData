@@ -76,8 +76,10 @@ str(DefeatDays_LongVersion)
 
 DefeatDays_LongVersion$Day_CenteredOn4<-DefeatDays_LongVersion$Day-3
 
-DefeatDays_LongVersion_VideoRecorded<-DefeatDays_LongVersion[is.na(DefeatDays_LongVersion$Submissive)==F,]
 
+#Subsetting:
+DefeatDays_LongVersion_VideoRecorded<-DefeatDays_LongVersion[is.na(DefeatDays_LongVersion$Submissive)==F,]                                                 
+                                                      
 DefeatDays_LongVersion_VideoRecorded$Submissive
 
 DefeatDays_LongVersion_OnlyDefeated<-DefeatDays_LongVersion[is.na(DefeatDays_LongVersion$TimeCaged)==F,]
