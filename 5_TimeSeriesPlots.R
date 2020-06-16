@@ -90,11 +90,11 @@ create_time_plots <- function(time_series_matrix, time_series_intercept, time_se
   dev.off()
 }
 
-#Social Defeat Time Series variables to loop over (once the plotting function is done):
-TimeSeriesVariables_Matrices<-list(Aggressive_Matrix, Aggressive_Log2_Matrix, Submissive_Matrix, Submissive_Log2_Matrix, OtherBehavior_Matrix, DefeatScore_Matrix, TimeCaged_Matrix)
-TimeSeriesVariables_Names<-c("Aggressive Behavior", "Aggressive Behavior (Log2)", "Submissive Behavior", "Submissive Behavior (Log2)", "Other Behavior", "Defeat Score", "Time Caged") 
-TimeSeriesVariables_Intercepts<-cbind(Data$Aggressive_Intercept, Data$AggressiveLog2_Intercept, Data$Submissive_Intercept, Data$SubmissiveLog2_Intercept, Data$OtherBehavior_Intercept,Data$DefeatScore_Intercept, Data$TimeCaged_Intercept)
-TimeSeriesVariables_Slopes<-cbind(Data$Aggressive_Slope, Data$AggressiveLog2_Slope, Data$Submissive_Slope, Data$SubmissiveLog2_Slope, Data$OtherBehavior_Slope,Data$DefeatScore_Slope, Data$TimeCaged_Slope)
-
-create_time_plots(Aggressive_Log2_Matrix, Data$AggressiveLog2_Intercept, Data$AggressiveLog2_Slope, "Aggressive Log2", "Aggressive Behavior (Log2)")
-create_time_plots(Submissive_Log2_Matrix, Data$SubmissiveLog2_Intercept, Data$SubmissiveLog2_Slope, "Submissive Log2", "Submissive Behavior (Log2)")
+#Creates the appropriate time series plots for each Social Defeat Time Series variable
+create_time_plots(Aggressive_Matrix, Data$Aggressive_Intercept, Data$Aggressive_Slope, "Aggressive Behavior", "Aggressive Behavior")
+create_time_plots(Aggressive_Log2_Matrix, Data$AggressiveLog2_Intercept, Data$AggressiveLog2_Slope, "Aggressive Behavior (Log2)", "Aggressive Behavior (Log2)")
+create_time_plots(Submissive_Matrix, Data$Submissive_Intercept, Data$Submissive_Slope, "Submissive Behavior", "Submissive Behavior")
+create_time_plots(Submissive_Log2_Matrix, Data$SubmissiveLog2_Intercept, Data$SubmissiveLog2_Slope, "Submissive Behavior (Log2)", "Submissive Behavior (Log2)")
+create_time_plots(OtherBehavior_Matrix, Data$OtherBehavior_Intercept, Data$OtherBehavior_Slope, "Other Behavior", "Other Behavior")
+create_time_plots(DefeatScore_Matrix, Data$DefeatScore_Intercept, Data$DefeatScore_Slope, "Defeat Score", "Defeat Score")
+create_time_plots(TimeCaged_Matrix, Data$TimeCaged_Intercept, Data$TimeCaged_Slope, "Time Caged", "Time Caged")
