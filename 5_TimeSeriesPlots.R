@@ -1,7 +1,6 @@
 #Liam's functionalized version of TimeSeriesPlots. Second Edition.
 #Note to Self (Liam): Rework my titling system so that it functions automatically and isn't complete garbage. Remember to ask Dr. Hagenauer about naming conventions and whether it would be alright to rework how things are named.
 
-
 #Creates time plots and outputs them to a pdf. 
 #time_series_matrix corresponds to the specific variable matrix the function will be graphing from. Example: Aggressive_Log2_Matrix
 #time_series_intercept corresponds to the intercept stored in Data of the specified time_Series_matrix. Example: Data$AggressiveLog2_Intercept
