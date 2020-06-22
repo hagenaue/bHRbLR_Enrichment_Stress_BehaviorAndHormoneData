@@ -1,4 +1,5 @@
-#Liam's functionalized version of TimeSeriesPlots. Second Edition.
+#Megan's edits to Liam's functionalized version of TimeSeriesPlots. Second Edition.
+#The goal was to make a version that matched other figure formatting for the paper.
 #Note to Self (Liam): Rework my titling system so that it functions automatically and isn't complete garbage. Remember to ask Dr. Hagenauer about naming conventions and whether it would be alright to rework how things are named.
 
 
@@ -6,7 +7,7 @@ TempCol<-as.character(Data$Treatment_Group)
 TempPch<-as.character(Data$Treatment_Group)
 
 
-#Color codes the graphs so that they match the colors used for the enrichment groups in the boxplots used for other variables:  
+#so that they match the colors/symbols used for the enrichment groups in the boxplots used for other variables:  
 TempCol[TempCol=="HR NIL + SD"]<-"green3"
 TempCol[TempCol=="HR EC + SD"]<-"forestgreen"
 TempCol[TempCol=="HR EE + SD"]<-"darkgreen"
@@ -37,6 +38,7 @@ TempPch[TempPch=="LR EE"]<-17
 
 TempPch<-as.numeric(TempPch)
 
+#Making the treatment group names match that used in the rest of the paper:
 Data$Treatment_Group2<-Data$Treatment_Group
 
 Data$Treatment_Group2[Data$Treatment_Group2=="HR EC"]<-"bHR SE"
@@ -82,13 +84,13 @@ create_time_plots <- function(time_series_matrix, time_series_intercept, time_se
     
     starting_point <- 1
     
-    if (treatment_group == "LR NIL + SD") {
+    if (treatment_group == "bLR NIL + SD") {
       starting_point <- 9
-    } else if (treatment_group == "LR EC + SD") {
+    } else if (treatment_group == "bLR SE + SD") {
       starting_point <- 4
-    } else if (treatment_group == "LR EE + SD") {
+    } else if (treatment_group == "bLR EE + SD") {
       starting_point <- 6
-    } else if (treatment_group == "HR EE + SD") {
+    } else if (treatment_group == "bHR EE + SD") {
       starting_point <- 4
     } 
     
@@ -101,7 +103,7 @@ create_time_plots <- function(time_series_matrix, time_series_intercept, time_se
     panel_starting_point <- determine_starting_point(treatment_group)
     #Takes the data from the specified treatment group in the selected time series variable and assigns it to Temp. 
     Temp<-time_series_matrix[Data$Treatment_Group2==treatment_group,]
-    #Creates the character vector "TempGen" from from the specified treatment group generations.
+    #Creates vectors with formatting info for the specified treatment groups.
     TempCol_T<-TempCol[which(Data$Treatment_Group2==treatment_group)]
     TempPch_T<-TempPch[which(Data$Treatment_Group2==treatment_group)]
     
@@ -109,6 +111,7 @@ create_time_plots <- function(time_series_matrix, time_series_intercept, time_se
     #Creates the groundwork of the time plot for the selected time series variable for the specified treatment group using a generic X-Y plot.
     #Note to Self (Liam): Rework the labeling system.
     plot(Temp[panel_starting_point,]~DefeatDay, ylab=graph_y_label, xlab="Defeat Day", main=treatment_group, ylim=c(min(cbind(time_series_intercept,time_series_matrix), na.rm=T), max(cbind(time_series_intercept,time_series_matrix), na.rm=T)), pch=TempPch_T[i], col="grey", xaxt="n")
+    #relabeling the x-axis so that it is just social defeat day:
     xtick=c(1,2,3,4)
     xtickloc=c(-3,-2,-1,0)
     #axis(side=1, at=xtickloc, labels = FALSE)
