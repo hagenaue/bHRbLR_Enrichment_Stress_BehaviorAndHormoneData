@@ -55,7 +55,7 @@ rm(Temp)
 
 DataColumnsForBoxplots_Hormones<-c(48:51)
 YLabelsForBoxplots_Hormones<-c("plasma corticosterone (pg/mL)", "plasma testosterone (pg/mL)", "plasma oxytocin (pg/mL)", "plasma IL-6 (pg/mL)")
-LimitOfDetection_Hormones<-c(12.8, 30.6, 15.5, 78)
+LimitOfDetection_Hormones<-c(12.8, 30.6, 15.5, 20)
 #Note - there are multiple kits with the same product numbers. Double check with Angela that I got the right one
 #There was no limit of detection listed for the IL6 kit. As a place-holder, I put the value of the lowest concentration on the standard curve. Interestingly, *most of our values are below that* which may explain why the data is so messy.
 
