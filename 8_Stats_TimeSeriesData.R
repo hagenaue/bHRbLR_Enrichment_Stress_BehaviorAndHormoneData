@@ -67,6 +67,44 @@ for(i in 8:14) {
 
 #******************************
 
+setwd("~/Documents/Microarray Gen/Angela_HRLR_EE_Stress/Behav_Analysis_20200518/MLM_Output/wANOVA/Simpler")
+
+#Simpler version (just ANOVA output from Day 4):
+
+time_series_variable_names <- c("TimeCaged", "DefeatScore", "Submissive", "Aggressive", "OtherBehavior", "Submissive_Log2", "Aggressive_Log2")
+
+for(i in 8:14) {
+  
+  current_time_variable <- unlist(data.frame(DefeatDays_LongVersion_OnlyDefeated[i]))
+  
+  DefeatDays_LongVersion_OnlyDefeated$Temp <- current_time_variable
+  
+  OutputtingStats<-file(paste("MLM_byTreatmentGroup_", colnames(DefeatDays_LongVersion_OnlyDefeated)[i], ".txt", sep=""))
+  
+  stats_output <- c(
+    
+    print(paste("", "******************************************************************************","", "ANOVA Summary of model with intercept set at Day 4 w/ Generation as a co-variate:", "", sep="\n")),
+    
+    capture.output(car::Anova(lme(Temp~Day_CenteredOn4*Line*Enrichment+Generation, random=~Day_CenteredOn4|RatID, data=DefeatDays_LongVersion_OnlyDefeated, correlation = corAR1(), na.action=na.omit, method="ML", control = lmeControl(opt = 'optim'), contrasts=list(Line=contr.sum, Enrichment=contr.sum, Generation=contr.sum)), type="III")),
+    
+    print("******************************************************************************")
+  )
+  
+  cat(stats_output, file=paste("MLM_byTreatmentGroup_", colnames(DefeatDays_LongVersion_OnlyDefeated)[i], ".txt", sep=""), sep="\n", append=TRUE)
+  
+  close(OutputtingStats)
+  
+  rm(stats_output)
+  rm(current_time_variable)
+  
+  DefeatDays_LongVersion_OnlyDefeated$Temp <- NULL
+}
+
+#********************************************
+
+
+
+
 #Scrap code used to troubleshoot ANOVA output:
 
 
