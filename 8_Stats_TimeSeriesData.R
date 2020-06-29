@@ -315,5 +315,39 @@ car::Anova(Model, type="III")
 # ---
 #   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-#So the default settings for car::Anova are contr.treatment with a type II (sequential) test. The centering for numeric variables or co-variates matters for interepreting the results. And it doesn't not automatically re-do lme() testing as "ML" before performing the anova comparison. 
+#One more check: Which method is anova using to generate p-values? I think it is a likelihood ratio test, but I want to be sure:
+
+Model<-lme(Submissive_Log2~Day_CenteredOn4*Line*Enrichment, random=~Day_CenteredOn4|RatID, data=DefeatDays_LongVersion_VideoRecorded, correlation = corAR1(), na.action=na.omit, method="ML", contrasts=list(Line=contr.sum, Enrichment=contr.sum))
+
+car::Anova(Model, type="III", test.statistic="LR")
+
+# Analysis of Deviance Table (Type III tests)
+# 
+# Response: Submissive_Log2
+# Chisq Df Pr(>Chisq)    
+# (Intercept)                     619.4421  1  < 2.2e-16 ***
+#   Day_CenteredOn4                  36.9749  1  1.197e-09 ***
+#   Line                             62.6864  1  2.424e-15 ***
+#   Enrichment                       13.1563  2   0.001390 ** 
+#   Day_CenteredOn4:Line             10.3218  1   0.001315 ** 
+#   Day_CenteredOn4:Enrichment        3.3352  2   0.188698    
+# Line:Enrichment                   4.7656  2   0.092292 .  
+# Day_CenteredOn4:Line:Enrichment   1.9097  2   0.384873    
+# ---
+#   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+#Yep, it is a likelihood ratio test. Good.
+
+#"Tests of fixed effects are typically done with either Wald or likelihood ratio (LRT) tests. With the assumptions of asymptotic distributions and independent predictors, Wald and LRT tests are equivalent. When a data set size is not large enough to be a good approximation of the asymptotic distribution or there is some correlation amongst the predictors, the Wald and LRT test results can vary considerably.
+
+#How large the data set needs to be for the asymptotic distribution to be a good approximation depends not only on how many observations you have, but also on the response variable type and the size of subgroups of observations formed by the categorical variables in the model. With a continuous response variable in a linear mixed model, subgroup sizes as small as five may be enough for the Wald and LRT to be similar. When the response is an indicator variable and the proportion of events of interest is small, groups size of one hundred may not be large enough for the Wald and LRT results to be similar.
+
+#The Wald test is based only on estimates from the model being evaluated. This results in an implied assumption that a model which holds the parameter being tested to zero will be the same with the exception of the parameter which is being tested. Correlation between the tested predictor and the other model predictors, can cause the estimate made from the model including the parameter to be different from a model which holds the parameter to zero. The LRT requires the formal estimation of a model which restricts the parameter to zero and therefore accounts for correlation in its test.
+
+#The LRT is generally preferred over Wald tests of fixed effects in mixed models"
+
+#https://www.ssc.wisc.edu/sscc/pubs/MM/MM_TestEffects.html
+
+
+#So the default settings for car::Anova when applied to a multilevel regression model are contr.treatment with a type II (sequential) Likelihood Ratio test. The centering for numeric variables or co-variates matters for interepreting the results. And it doesn't not automatically re-do lme() testing as "ML" before performing the anova comparison. 
 #All useful to know.
