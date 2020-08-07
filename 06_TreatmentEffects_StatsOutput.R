@@ -108,3 +108,15 @@ for(i in DataColumnsForStats){
   rm(Temp)
   
 }
+
+
+######################
+
+#Also: Outputting sample sizes for each variable in the dataset for reporting statistics:
+
+colnames(Data)
+
+setwd("~/Documents/Microarray Gen/Angela_HRLR_EE_Stress/Behav_Analysis_20200518")
+
+SampleSizeForEachVariable<-apply(Data[,c(10:90)], 2, function(y) sum(is.na(y)==F))
+write.csv(SampleSizeForEachVariable, "SampleSizeForEachVariable.csv")
