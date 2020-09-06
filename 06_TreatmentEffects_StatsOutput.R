@@ -92,14 +92,14 @@ for(i in DataColumnsForStats){
   
   print("Traditional & Permutation-Based ANOVA (contrasts=contr.sum), w/ Generation Covariate"),
   
-  capture.output(aovperm(Temp[,i]~Line_Factor*Enrichment_Factor*Social_Defeat_Factor+Generation, data = Temp, contrasts="contr.sum", np=15000, method="freedman_lane")),
+  capture.output(aovperm(Temp[,i]~Line_Factor*Enrichment_Factor*Social_Defeat_Factor+Generation, data = Temp, contrasts="contr.sum", np=15000, method="freedman_lane"))
   
   
-  print("******************************"),
+  #print("******************************"),
   
-  print("Permutation-Based T-Test Post-Hoc Comparisons (FDR-Corrected)"),
+  #print("Permutation-Based T-Test Post-Hoc Comparisons (FDR-Corrected)"),
   
-  capture.output(PT = pairwisePermutationTest(EPM_Explore_Open_Arms~Treatment_Group, data = Temp, method = "fdr"))
+  #capture.output(PT = pairwisePermutationTest(EPM_Explore_Open_Arms~Treatment_Group, data = Temp, method = "fdr"))
   
   )
   cat(out, file=paste("LM_byTreatmentGroup_", colnames(Temp)[i], ".txt", sep=""), sep="\n", append=TRUE)
