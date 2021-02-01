@@ -28,6 +28,7 @@ setwd("~/Documents/Microarray Gen/Angela_HRLR_EE_Stress/Behav_Analysis_20200518/
 
 colnames(Data)
 
+
 colnames(Data[,c(10:21)])
 
 DataColumnsForBoxplots_AllGroups<-c(10:21)

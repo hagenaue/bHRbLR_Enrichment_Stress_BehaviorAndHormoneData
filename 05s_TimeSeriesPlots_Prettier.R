@@ -1,6 +1,6 @@
 #Megan's edits to Liam's functionalized version of TimeSeriesPlots. Second Edition.
 #The goal was to make a version that matched other figure formatting for the paper.
-#Note to Self (Liam): Rework my titling system so that it functions automatically and isn't complete garbage. Remember to ask Dr. Hagenauer about naming conventions and whether it would be alright to rework how things are named.
+
 
 
 TempCol<-as.character(Data$Treatment_Group)

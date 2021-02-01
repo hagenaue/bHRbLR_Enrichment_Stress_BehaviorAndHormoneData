@@ -8,7 +8,7 @@
 ## F56: Gain was set lower during recording to eliminate noise issues, calls defined automatically by avisoft using our automated protocol.
 
 #F56 data
-setwd("~/Documents/Microarray Gen/Angela_HRLR_EE_Stress/USV data/F56")
+setwd("C:/Users/Frosty/Desktop/Research/Research during Summer of 2020/R Data/Angela_HRLR_StressEnrichData/USV data/F56")
 
 filenames<-list.files()
 
@@ -44,7 +44,7 @@ str(concatenated)
 # $ duration.of.18...32.kHz   : num  NA NA NA NA NA NA NA NA NA NA ...
 # $ duration.of.32...96.kHz   : num  0.0025 0.0015 0.0025 0.0015 0.002 0.0015 0.002 NA 0.002 0.0025 ...
 
-setwd("~/Documents/Microarray Gen/Angela_HRLR_EE_Stress/USV data")
+setwd("C:/Users/Frosty/Desktop/Research/Research during Summer of 2020/R Data/Angela_HRLR_StressEnrichData/USV data")
 
 pdf("F56_Histogram_preakfreqmeanentire.pdf", width=5, height=4)
 hist(concatenated$preak.freq.mean.entire, breaks=100, main="F56: Histogram of Peak Frequency Mean Entire", col=2)

@@ -39,6 +39,7 @@ library(rcompanion)
 #Other notes: Check with Angela about IL6, which ran HRs and LRs in separate batches.
 
 
+#This may need to be changed due to the new dataset. 
 DataColumnsForStats<-c(10:21, 48:51, 59:63, 73:74)
 
 

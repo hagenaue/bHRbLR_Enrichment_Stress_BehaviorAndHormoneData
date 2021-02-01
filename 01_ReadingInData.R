@@ -2,6 +2,7 @@
 ##Megan Hagenauer, March 10, 2020
 ##Updated, April 30,2020
 ##Updated again, May 18, 2020
+##Updated to use the most recent dataset
 
 
 #***********************************************************
@@ -10,7 +11,7 @@
 
 setwd("C:/Users/Frosty/Desktop/Research/Research during Summer of 2020/R Data/Angela_HRLR_StressEnrichData")
 
-Data<-read.csv("HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_SDScoresFixed_FixedFormatIDs_TimeOnTop.csv", header=T, stringsAsFactors = F)
+Data<-read.csv("HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_OFSDScoresFixed_FixedFormatIDs_TimeOnTop_forFullBehavior2.csv", header=T, stringsAsFactors = F)
 #Notes about the dataset:
 ##1) The IL6 data comes from two separate runs (one run is bHR and one run is bLR) due to problems with the standard curve
 ##2) The corticosterone was re-done
@@ -23,7 +24,7 @@ Data<-read.csv("HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_SDScoresF
 
 colnames(Data)
 
-# [1] "Rat_ID"                                                                                                         
+# [1] "?..Rat_ID"                                                                                                      
 # [2] "Litter"                                                                                                         
 # [3] "From.Kathryn.or.not...Kathryn.may.not.have.culled.on.P1."                                                       
 # [4] "Cage..pair.housed_.if.uneven.last.three.together."                                                              
@@ -74,19 +75,49 @@ colnames(Data)
 # [49] "testosterone"                                                                                                   
 # [50] "Oxytocin..pg.ml."                                                                                               
 # [51] "IL.6..pg.ml."                                                                                                   
-# [52] "date_of_dissection"                                                                                             
-# [53] "hemisphere_dissected"                                                                                           
-# [54] "date_of_RNA_extraction"                                                                                         
-# [55] "RNA_conc"                                                                                                       
-# [56] "ratio_260_280"                                                                                                  
-# [57] "brain_region"                                                                                                   
-# [58] "Sequencing_core_sample_ID"    
+# [52] "NACC_date_of_dissection"                                                                                        
+# [53] "NACC_hemisphere_dissected"                                                                                      
+# [54] "NACC_date_of_RNA_extraction"                                                                                    
+# [55] "NACC_RNA_conc"                                                                                                  
+# [56] "NACC_ratio_260_280"                                                                                             
+# [57] "NACC_brain_region"                                                                                              
+# [58] "NACC_Sequencing_core_sample_ID"                                                                                 
+# [59] "HC_date_of_dissection"                                                                                          
+# [60] "HC_hemisphere_dissected"                                                                                        
+# [61] "HC_date_of_RNA_extraction"                                                                                      
+# [62] "HC_RNA_conc"                                                                                                    
+# [63] "HC_ratio_260_280"                                                                                               
+# [64] "HC_brain_region"                                                                                                
+# [65] "HC_Sequencing_core_sample_ID"                                                                                   
+# [66] "OF_Distance_Start.0.01.00"                                                                                      
+# [67] "OF_Distance_0.01.00.0.02.00"                                                                                    
+# [68] "OF_Distance_0.02.00.0.03.00"                                                                                    
+# [69] "OF_Distance_0.03.00.0.04.00"                                                                                    
+# [70] "OF_Distance_0.04.00.0.05.00"                                                                                    
+# [71] "OF_PercentTimeInCenter_Start.0.01.00"                                                                           
+# [72] "OF_PercentTimeInCenter_0.01.00.0.02.00"                                                                         
+# [73] "OF_PercentTimeInCenter_0.02.00.0.03.00"                                                                         
+# [74] "OF_PercentTimeInCenter_0.03.00.0.04.00"                                                                         
+# [75] "OF_PercentTimeInCenter_0.04.00.0.05.00"                                                                         
+# [76] "Number.of.calls.noises.detected"                                                                                
+# [77] "Number.of.18...32.kHz"                                                                                          
+# [78] "Number.of.32...96.kHz"                                                                                          
+# [79] "average.max.peak.frequency"                                                                                     
+# [80] "average.duration.of.18...32.kHz"                                                                                
+# [81] "average.duration.of.32...96.kHz"                                                                                
+# [82] "number.of.calls.18...96.kHz"                                                                                    
+# [83] "X..18.32.kHz.over.total.recorded.calls.noises"                                                                  
+# [84] "X..32.96.kHz.calls.over.total.recorded.calls.noises"                                                            
+# [85] "Cranky.USVs_..18.32.kHz.over.18.96.kHz.calls"                                                                   
+# [86] "Happy.USVs_..32.96.kHz.calls.over.18.96.kHz.calls"    
 
 
 #Re-naming the variables using concise, consistent names:
 
 ##Aside: Angela may want different names as the final labels on figures for the paper - we'll have to deal with that later. 
 ##This code just makes it so that we can more easily look at our preliminary graphs and results. 
+
+colnames(Data)[1]<-"Rat_ID"
 
 colnames(Data)[7]<-"Treatment_Group"
 
@@ -120,7 +151,6 @@ colnames(Data)[32]<-"DefeatDay4_AggressorID"
 colnames(Data)[33]<-"DefeatDay4_DefeatScore"
 colnames(Data)[34]<-"DefeatDay4_TimeCaged"
 
-
 colnames(Data)[35]<- "DefeatDay1_Submissive"                                                                                              
 colnames(Data)[36]<- "DefeatDay1_Aggressive"                                                                                              
 colnames(Data)[37]<- "DefeatDay1_OtherBehavior"  
@@ -134,7 +164,7 @@ colnames(Data)[43]<- "DefeatDay3_OtherBehavior"
 
 colnames(Data)[44]<- "DefeatDay4_Submissive"                                                                                              
 colnames(Data)[45]<- "DefeatDay4_Aggressive"                                                                                              
-colnames(Data)[46]<- "DefeatDay4_OtherBehavior"                                                                                           
+colnames(Data)[46]<- "DefeatDay4_OtherBehavior"
 
 colnames(Data)[48]<-"Corticosterone"
 colnames(Data)[49]<-"Testosterone"
@@ -143,7 +173,7 @@ colnames(Data)[51]<-"IL6"
 
 
 str(Data)
-#'data.frame':	142 obs. of  58 variables:
+#'data.frame':	142 obs. of  86 variables:
 
 #Sets up Generation, Line, Enrichment, and Social_Defeat as factors.
 Data$Generation<-as.factor(Data$Generation)

@@ -4,6 +4,8 @@
 ##Updated again, May 18, 2020
 ## Subsetted and tweaked to make it fit the results for just the Proteoglycan ISH animals Sept 14 2020
 
+# Updated to use the new Proteoglycan dataset Nov 12 2020 (Liam C. Thew Forrester)
+
 
 #***********************************************************
 
@@ -11,7 +13,7 @@
 
 setwd("C:/Users/Frosty/Desktop/Research/Research during Summer of 2020/R Data/Angela_HRLR_StressEnrichData")
 
-Data<-read.csv("HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_SDScoresFixed_FixedFormatIDs_TimeOnTop.csv", header=T, stringsAsFactors = F)
+Data<-read.csv("HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_OFSDScoresFixed_FixedFormatIDs_TimeOnTop_forProteoglycan2.csv", header=T, stringsAsFactors = F)
 #Notes about the dataset:
 ##1) The IL6 data comes from two separate runs (one run is bHR and one run is bLR) due to problems with the standard curve
 ##2) The corticosterone was re-done
@@ -24,7 +26,7 @@ Data<-read.csv("HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_SDScoresF
 
 colnames(Data)
 
-# [1] "Rat_ID"                                                                                                         
+# [1] "?..Rat_ID"                                                                                                      
 # [2] "Litter"                                                                                                         
 # [3] "From.Kathryn.or.not...Kathryn.may.not.have.culled.on.P1."                                                       
 # [4] "Cage..pair.housed_.if.uneven.last.three.together."                                                              
@@ -74,24 +76,18 @@ colnames(Data)
 # [48] "CORT"                                                                                                           
 # [49] "testosterone"                                                                                                   
 # [50] "Oxytocin..pg.ml."                                                                                               
-# [51] "IL.6..pg.ml."                                                                                                   
-# [52] "date_of_dissection"                                                                                             
-# [53] "hemisphere_dissected"                                                                                           
-# [54] "date_of_RNA_extraction"                                                                                         
-# [55] "RNA_conc"                                                                                                       
-# [56] "ratio_260_280"                                                                                                  
-# [57] "brain_region"                                                                                                   
-# [58] "Sequencing_core_sample_ID"    
-
+# [51] "IL.6..pg.ml."  
 
 #Re-naming the variables using concise, consistent names:
 
 ##Aside: Angela may want different names as the final labels on figures for the paper - we'll have to deal with that later. 
 ##This code just makes it so that we can more easily look at our preliminary graphs and results. 
+                                                                                         
+colnames(Data)[1]<-"Rat_ID"
 
 colnames(Data)[7]<-"Treatment_Group"
 
-colnames(Data)[10]<-"OpenField_DistanceTraveled"                                                                                          
+colnames(Data)[10]<-"OpenField_DistanceTraveled"
 colnames(Data)[11]<-"OpenField_Explore_Center"  
 colnames(Data)[12]<-"EPM_Explore_Open_Arms"
 
@@ -103,7 +99,7 @@ colnames(Data)[17]<-"SITest_TimeOnTop_Video"
 colnames(Data)[18]<-"SITest_SocialApproach_Video"
 colnames(Data)[19]<-"SITest_OtherBehavior_Video"
 colnames(Data)[20]<-"SITest_USVs_Distress_20kHz"
-colnames(Data)[21]<-"SITest_USVs_Happy_50kHz"  
+colnames(Data)[21]<-"SITest_USVs_Happy_50kHz"
 
 colnames(Data)[23]<-"DefeatDay1_AggressorID"
 colnames(Data)[24]<-"DefeatDay1_DefeatScore"
@@ -121,21 +117,20 @@ colnames(Data)[32]<-"DefeatDay4_AggressorID"
 colnames(Data)[33]<-"DefeatDay4_DefeatScore"
 colnames(Data)[34]<-"DefeatDay4_TimeCaged"
 
-
 colnames(Data)[35]<- "DefeatDay1_Submissive"                                                                                              
 colnames(Data)[36]<- "DefeatDay1_Aggressive"                                                                                              
-colnames(Data)[37]<- "DefeatDay1_OtherBehavior"  
+colnames(Data)[37]<- "DefeatDay1_OtherBehavior" 
 
 colnames(Data)[38]<- "DefeatDay2_Submissive"                                                                                              
 colnames(Data)[39]<- "DefeatDay2_Aggressive"                                                                                              
 colnames(Data)[40]<- "DefeatDay2_OtherBehavior"                                                                                            
 colnames(Data)[41]<- "DefeatDay3_Submissive"                                                                                              
 colnames(Data)[42]<- "DefeatDay3_Aggressive"                                                                                              
-colnames(Data)[43]<- "DefeatDay3_OtherBehavior"                                                                                           
+colnames(Data)[43]<- "DefeatDay3_OtherBehavior" 
 
 colnames(Data)[44]<- "DefeatDay4_Submissive"                                                                                              
 colnames(Data)[45]<- "DefeatDay4_Aggressive"                                                                                              
-colnames(Data)[46]<- "DefeatDay4_OtherBehavior"                                                                                           
+colnames(Data)[46]<- "DefeatDay4_OtherBehavior"
 
 colnames(Data)[48]<-"Corticosterone"
 colnames(Data)[49]<-"Testosterone"
@@ -143,11 +138,12 @@ colnames(Data)[50]<-"Oxytocin"
 colnames(Data)[51]<-"IL6"
 
 
+
 str(Data)
-#'data.frame':	142 obs. of  58 variables:
+#'data.frame':	142 obs. of  51 variables:
 
 
-setwd("~/Documents/Microarray Gen/Angela_HRLR_EE_Stress/Proteoglycan_ISH")
+
 ProteoglycanISH_ForComparisonWBehav<-read.csv("ProteoglycanISH_ForComparisonWBehav.csv", header=T, stringsAsFactors = F)
 colnames(ProteoglycanISH_ForComparisonWBehav)
 # [1] "Rat_ID"                                                                                                         
@@ -899,7 +895,7 @@ str(data.frame(Data, ProteoglycanISH_ForComparisonWBehav[,c(10:17)]))
 
 Data<-data.frame(Data, ProteoglycanISH_ForComparisonWBehav[,c(10:17)])
 
-colnames(Data)
+Dcolnames(Data)
 
 Data$Gpc1_Average<-apply(Data[,c(91:94)], 1, mean)
 Data$Sdc4_Average<-apply(Data[,c(95:98)], 1, mean)
@@ -1006,7 +1002,7 @@ colnames(Data)
 
 setwd("~/Documents/Microarray Gen/Angela_HRLR_EE_Stress/Proteoglycan_ISH")
 
-SampleSizeForEachVariable<-apply(Data[,c(10:100)], 2, function(y) sum(is.na(y)==F))
+SampleSizeForEachVariable<-apply(Data[,c(10:92)], 2, function(y) sum(is.na(y)==F))
 write.csv(SampleSizeForEachVariable, "SampleSizeForEachVariable.csv")
 
 
@@ -1014,7 +1010,6 @@ write.csv(SampleSizeForEachVariable, "SampleSizeForEachVariable.csv")
 
 #Megan's edits to Liam's functionalized version of TimeSeriesPlots. Second Edition.
 #The goal was to make a version that matched other figure formatting for the paper.
-#Note to Self (Liam): Rework my titling system so that it functions automatically and isn't complete garbage. Remember to ask Dr. Hagenauer about naming conventions and whether it would be alright to rework how things are named.
 
 #This code had to be seriously tweaked due to the lack of SE animals.
 
@@ -1222,7 +1217,7 @@ for(i in DataColumnsForBoxplots_AllGroups){
   
   pdf(paste("Boxplot_", colnames(Temp)[i], "vsAllGroups.pdf", sep=""), width=6, height=4)
   par(mar=c(6.5, 4.5, 1.1, 1.1), mgp=c(3, 1, 0))
-  boxplot(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, col=c("green3", "darkgreen", "green3", "darkgreen", "red1", "red4", "red1", "red4"), las=3, ylab=paste(YLabelsForBoxplots_AllGroups[i-9], sep=""), cex.lab=1.1, cex.main=1.75, cex.axis=0.9, outline=F)
+  boxplot(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, col=c("green3", "darkgreen", "green3", "darkgreen", "red1", "red4", "red1", "red4"), las=3, ylab=paste(YLabelsForBoxplots_AllGroups[i-9], sep=""), xlab="", cex.lab=1.1, cex.main=1.75, cex.axis=0.9, outline=F)
   
   stripchart(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, vertical = TRUE, 
              method = "jitter", add = TRUE, col = 'black', cex=1, pch=c(c(1,2, 16,17),c(1,2, 16,17)))
@@ -1240,7 +1235,7 @@ for(i in DataColumnsForBoxplots_Proteoglycans){
   
   pdf(paste("Boxplot_", colnames(Temp)[i], "vsAllGroups.pdf", sep=""), width=6, height=4)
   par(mar=c(6.5, 4.5, 1.1, 1.1), mgp=c(3, 1, 0))
-  boxplot(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, col=c("green3", "darkgreen", "green3", "darkgreen", "red1", "red4", "red1", "red4"), las=3, ylab=paste(YLabelsForBoxplots_Proteoglycans[i-90], sep=""), cex.lab=1.1, cex.main=1.75, cex.axis=0.9, outline=F)
+  boxplot(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, col=c("green3", "darkgreen", "green3", "darkgreen", "red1", "red4", "red1", "red4"), las=3, ylab=paste(YLabelsForBoxplots_Proteoglycans[i-90], sep=""), xlab="", cex.lab=1.1, cex.main=1.75, cex.axis=0.9, outline=F)
   
   stripchart(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, vertical = TRUE, 
              method = "jitter", add = TRUE, col = 'black', cex=1, pch=c(c(1,2, 16,17),c(1,2, 16,17)))
