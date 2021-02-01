@@ -2,15 +2,17 @@
 ##Megan Hagenauer, March 10, 2020
 ##Updated, April 30,2020
 ##Updated again, May 18, 2020
+##Updated again in July & Sept 2020
+##Updated again in Feb 2021
 
 
 #***********************************************************
 
 # 1. Reading in Data: 
 
-setwd("C:/Users/Frosty/Desktop/Research/Research during Summer of 2020/R Data/Angela_HRLR_StressEnrichData")
+setwd("~/Documents/Microarray Gen/Angela_HRLR_EE_Stress/ReDone_OpenFieldData_20201008")
 
-Data<-read.csv("HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_SDScoresFixed_FixedFormatIDs_TimeOnTop.csv", header=T, stringsAsFactors = F)
+Data<-read.csv("HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_OFSDScoresFixed_FixedFormatIDs_TimeOnTop_forFullBehavior2.csv", header=T, stringsAsFactors = F)
 #Notes about the dataset:
 ##1) The IL6 data comes from two separate runs (one run is bHR and one run is bLR) due to problems with the standard curve
 ##2) The corticosterone was re-done
@@ -19,7 +21,13 @@ Data<-read.csv("HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_SDScoresF
 ##5) We also tried to pull out Litter as a variable (maybe - this seems to partially contradict information that Angela gave us recently about the full rat ID #s)
 ##6) We had already looked at the data extensively as part of the student projects, so many of the issues were already noticed before pulling together this analysis.
 ##7) The social defeat video data was scored in three generation-based batches. In my first attempt at the analysis, I was missing the data from Generation F56.
-
+##8) There were issues with the open field data and USV data in the July/Sept analyses: 
+#####- Angela realized that the fact that the rats were starting out the open field task in the center meant they were sometimes freezing there at the beginning
+#####- so she outputted a time-binned (by minute) version of the open field results, but accidentally outputted it from files that hadn't been cleaned of video artifacts
+#####- so then she re-outputted it again from the cleaned files. 
+#####-For the USVs: we discovered that the two generations were run with completely different recording settings (i.e., basically measuring different USVs) and can't be easily combined
+#####-We also discovered that many of the "USV" calls were outside the range of actual calls (lower or higher mean peak frequency) and filtered them out.
+#####-So everything related to these variables was re-outputted again (02/2021)
 
 colnames(Data)
 
