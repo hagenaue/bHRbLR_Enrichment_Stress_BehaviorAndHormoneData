@@ -781,8 +781,7 @@ for(i in c(1:length(OtherBehavior_Matrix[,1]))){
 #if there are missing values from the data, remove them
 #for loop runs the if else function for each value within the vector
 ##of other behvaior data
-=======
-  #if there are too many missing values from the data, make output NA
+#if there are too many missing values from the data, make output NA
 
 Data$OtherBehavior_Intercept
 #get intercept data, missing values = NA
@@ -1018,19 +1017,19 @@ TempPch<-as.character(Data$Treatment_Group)
 
 
 #so that they match the colors/symbols used for the enrichment groups in the boxplots used for other variables:  
-TempCol[TempCol=="HR NIL + SD"]<-"green3"
+TempCol[TempCol=="HR NIL + SD"]<-rgb(0,192,0, maxColorValue = 255)
 #TempCol[TempCol=="HR EC + SD"]<-"forestgreen"
-TempCol[TempCol=="HR EE + SD"]<-"darkgreen"
-TempCol[TempCol=="LR NIL + SD"]<-"red1"
+TempCol[TempCol=="HR EE + SD"]<-rgb(15,153,178, maxColorValue = 255)
+TempCol[TempCol=="LR NIL + SD"]<-rgb(255,0,0, maxColorValue = 255)
 #TempCol[TempCol=="LR EC + SD"]<-"red3"
-TempCol[TempCol=="LR EE + SD"]<-"red4"
+TempCol[TempCol=="LR EE + SD"]<-rgb(255,255,0, maxColorValue = 255)
 
-TempCol[TempCol=="HR NIL"]<-"green3"
+TempCol[TempCol=="HR NIL"]<-rgb(0,192,0, maxColorValue = 255)
 #TempCol[TempCol=="HR EC"]<-"forestgreen"
-TempCol[TempCol=="HR EE"]<-"darkgreen"
-TempCol[TempCol=="LR NIL"]<-"red1"
+TempCol[TempCol=="HR EE"]<-rgb(15,153,178, maxColorValue = 255)
+TempCol[TempCol=="LR NIL"]<-rgb(255,0,0, maxColorValue = 255)
 #TempCol[TempCol=="LR EC"]<-"red3"
-TempCol[TempCol=="LR EE"]<-"red4"
+TempCol[TempCol=="LR EE"]<-rgb(255,255,0, maxColorValue = 255)
 
 TempPch[TempPch=="HR NIL + SD"]<-16
 #TempPch[TempPch=="HR EC + SD"]<-15
@@ -1086,7 +1085,7 @@ create_time_plots <- function(time_series_matrix, time_series_intercept, time_se
   #cex.axis is the magnification to be used for axis annotation relative to the current setting of cex.
   #cex.main is the magnification to be used for main titles relative to the current setting of cex.
   #mar is a numerical vector of the form c(bottom, left, top, right) which gives the number of lines of margin to be specified on the four sides of the plot. The default is c(5, 4, 4, 2) + 0.1.
-  par(mfrow=c(2,2), cex.lab=2, cex.axis=1.5, cex.main=2, mar=c(5.1, 5.1, 5.1, 3.1))
+  par(mfrow=c(2,2), cex = 1.25, cex.lab=1.6, cex.axis=1.2, cex.main=1.6, mar=c(5.1, 5.1, 5.1, 3.1))
   
   #Determines the proper starting point when graphing a time series panel. "HR NIL + SD" & "HR EC + SD" are not included because they start at 1.
   #Note to Self (Liam): Rework this to automatically determine the starting point, as the various time series variables likely start at different spots as well
@@ -1121,6 +1120,12 @@ create_time_plots <- function(time_series_matrix, time_series_intercept, time_se
     #Creates the groundwork of the time plot for the selected time series variable for the specified treatment group using a generic X-Y plot.
     #Note to Self (Liam): Rework the labeling system.
     plot(Temp[panel_starting_point,]~DefeatDay, ylab=graph_y_label, xlab="Defeat Day", main=treatment_group, ylim=c(min(cbind(time_series_intercept,time_series_matrix), na.rm=T), max(cbind(time_series_intercept,time_series_matrix), na.rm=T)), pch=TempPch_T[i], col="grey", xaxt="n")
+    
+    #Makes the graph background grey
+    rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = "grey")
+    #Replots plot over grey background
+    #plot(Temp[panel_starting_point,]~DefeatDay, ylab=graph_y_label, xlab="Defeat Day", main=treatment_group, ylim=c(min(cbind(time_series_intercept,time_series_matrix), na.rm=T), max(cbind(time_series_intercept,time_series_matrix), na.rm=T)), add = TRUE, pch=TempPch_T[i], col="grey", xaxt="n")
+    
     #relabeling the x-axis so that it is just social defeat day:
     xtick=c(1,2,3,4)
     xtickloc=c(-3,-2,-1,0)
@@ -1133,7 +1138,7 @@ create_time_plots <- function(time_series_matrix, time_series_intercept, time_se
     #abline() adds straight lines to the plot. In this case, it uses FitLine to provide the coefficients (Intercept and DefeatDay). It assigns colors to the lines based on the colors listed in TempGen ("red2", etc).
     for(i in c(1:length(Temp[,1]))){
       if(sum(is.na(Temp[i,]))<3){
-        points(Temp[i,]~DefeatDay, pch=TempPch_T[i], col="grey")
+        points(Temp[i,]~DefeatDay, pch=TempPch_T[i], col="black")
         FitLine<-lm(Temp[i,]~DefeatDay)
         abline(FitLine, col=TempCol_T[i])}else{}
     }
@@ -1181,8 +1186,8 @@ Data$TreatmentPch[Data$Enrichment=="NIL" & Data$Social_Defeat=="SD"]<-16
 Data$TreatmentPch[Data$Enrichment=="NIL" & Data$Social_Defeat=="NIL"]<-1
 
 #General Decoder for Colors:
-#LR levels of enrichment: NIL: "green3", EC: "forestgreen", EE: "darkgreen"
-#HR levels of enrichment: NIL: "red1", EC: "red3", EE: "red4" 
+#LR levels of enrichment: NIL: rgb(0,192,0, maxColorValue = 255), EC: "forestgreen", EE: rgb(15,153,178, maxColorValue = 255)
+#HR levels of enrichment: NIL: rgb(255,0,0, maxColorValue = 255), EC: "red3", EE: rgb(255,255,0, maxColorValue = 255) 
 
 #To Do:
 #I vectorized the y-axis labels to match Angela's preferences, but some of her variables didn't have label preferences - double check.
@@ -1217,8 +1222,12 @@ for(i in DataColumnsForBoxplots_AllGroups){
   
   pdf(paste("Boxplot_", colnames(Temp)[i], "vsAllGroups.pdf", sep=""), width=6, height=4)
   par(mar=c(6.5, 4.5, 1.1, 1.1), mgp=c(3, 1, 0))
-  boxplot(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, col=c("green3", "darkgreen", "green3", "darkgreen", "red1", "red4", "red1", "red4"), las=3, ylab=paste(YLabelsForBoxplots_AllGroups[i-9], sep=""), xlab="", cex.lab=1.1, cex.main=1.75, cex.axis=0.9, outline=F)
-  
+  boxplot(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, col=c(rgb(0,192,0, maxColorValue = 255), rgb(15,153,178, maxColorValue = 255), rgb(0,192,0, maxColorValue = 255), rgb(15,153,178, maxColorValue = 255), rgb(255,0,0, maxColorValue = 255), rgb(255,255,0, maxColorValue = 255), rgb(255,0,0, maxColorValue = 255), rgb(255,255,0, maxColorValue = 255)), las=3, ylab=paste(YLabelsForBoxplots_AllGroups[i-9], sep=""), xlab="", cex.lab=1.1, cex.main=1.75, cex.axis=0.9, outline=F)
+  #Makes the graph background grey
+  rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = "grey")
+  #Replots the graph over the grey background
+  boxplot(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, col=c(rgb(0,192,0, maxColorValue = 255), rgb(15,153,178, maxColorValue = 255), rgb(0,192,0, maxColorValue = 255), rgb(15,153,178, maxColorValue = 255), rgb(255,0,0, maxColorValue = 255), rgb(255,255,0, maxColorValue = 255), rgb(255,0,0, maxColorValue = 255), rgb(255,255,0, maxColorValue = 255)), add = TRUE, las=3, ylab=paste(YLabelsForBoxplots_AllGroups[i-9], sep=""), xlab="", cex.lab=1.1, cex.main=1.75, cex.axis=0.9, outline=F)
+   
   stripchart(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, vertical = TRUE, 
              method = "jitter", add = TRUE, col = 'black', cex=1, pch=c(c(1,2, 16,17),c(1,2, 16,17)))
   dev.off()
@@ -1235,7 +1244,12 @@ for(i in DataColumnsForBoxplots_Proteoglycans){
   
   pdf(paste("Boxplot_", colnames(Temp)[i], "vsAllGroups.pdf", sep=""), width=6, height=4)
   par(mar=c(6.5, 4.5, 1.1, 1.1), mgp=c(3, 1, 0))
-  boxplot(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, col=c("green3", "darkgreen", "green3", "darkgreen", "red1", "red4", "red1", "red4"), las=3, ylab=paste(YLabelsForBoxplots_Proteoglycans[i-90], sep=""), xlab="", cex.lab=1.1, cex.main=1.75, cex.axis=0.9, outline=F)
+  boxplot(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, col=c(rgb(0,192,0, maxColorValue = 255), rgb(15,153,178, maxColorValue = 255), rgb(0,192,0, maxColorValue = 255), rgb(15,153,178, maxColorValue = 255), rgb(255,0,0, maxColorValue = 255), rgb(255,255,0, maxColorValue = 255), rgb(255,0,0, maxColorValue = 255), rgb(255,255,0, maxColorValue = 255)), las=3, ylab=paste(YLabelsForBoxplots_Proteoglycans[i-90], sep=""), xlab="", cex.lab=1.1, cex.main=1.75, cex.axis=0.9, outline=F)
+  #Makes the graph background grey
+  rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = "grey")
+  #Replots boxplot over grey background
+  boxplot(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, col=c(rgb(0,192,0, maxColorValue = 255), rgb(15,153,178, maxColorValue = 255), rgb(0,192,0, maxColorValue = 255), rgb(15,153,178, maxColorValue = 255), rgb(255,0,0, maxColorValue = 255), rgb(255,255,0, maxColorValue = 255), rgb(255,0,0, maxColorValue = 255), rgb(255,255,0, maxColorValue = 255)), add = TRUE, las=3, ylab=paste(YLabelsForBoxplots_Proteoglycans[i-90], sep=""), xlab="", cex.lab=1.1, cex.main=1.75, cex.axis=0.9, outline=F)
+  
   
   stripchart(Temp[,i]~Enrichment*Social_Defeat*Line, data = Temp, vertical = TRUE, 
              method = "jitter", add = TRUE, col = 'black', cex=1, pch=c(c(1,2, 16,17),c(1,2, 16,17)))
@@ -1325,6 +1339,10 @@ for(i in DataColumnsForHistograms_AllGroups) {
   pdf(paste("Histograms", colnames(Temp)[i], 
             ".pdf", sep=""), height=5, width=5)
   hist(Temp[,i], xlab=XLabelsForHistograms_AllGroups[i-9], col="lightblue")
+  #Makes the graph background grey
+  rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = "grey")
+  #Replots plot over grey background
+  hist(Temp[,i], xlab=XLabelsForHistograms_AllGroups[i-9], add=TRUE, col="lightblue")
   
   dev.off()
   rm(Temp)
@@ -1337,6 +1355,10 @@ for(i in DataColumnsForHistograms_Proteoglycans) {
   pdf(paste("Histograms", colnames(Temp)[i], 
             ".pdf", sep=""), height=5, width=5)
   hist(Temp[,i], xlab=XLabelsForHistograms_Proteoglycans[i-90], col="lightblue")
+  #Makes the graph background grey
+  rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = "grey")
+  #Replots plot over grey background
+  hist(Temp[,i], xlab=XLabelsForHistograms_Proteoglycans[i-90], add=TRUE, col="lightblue")
   
   dev.off()
   rm(Temp)
@@ -1355,19 +1377,19 @@ TempPch<-as.character(Data$Treatment_Group)
 
 
 #Color codes the graphs so that they match the colors used for the enrichment groups in the boxplots used for other variables:  
-TempCol[TempCol=="HR NIL + SD"]<-"green3"
+TempCol[TempCol=="HR NIL + SD"]<-rgb(0,192,0, maxColorValue = 255)
 #TempCol[TempCol=="HR EC + SD"]<-"forestgreen"
-TempCol[TempCol=="HR EE + SD"]<-"darkgreen"
-TempCol[TempCol=="LR NIL + SD"]<-"red1"
+TempCol[TempCol=="HR EE + SD"]<-rgb(15,153,178, maxColorValue = 255)
+TempCol[TempCol=="LR NIL + SD"]<-rgb(255,0,0, maxColorValue = 255)
 #TempCol[TempCol=="LR EC + SD"]<-"red3"
-TempCol[TempCol=="LR EE + SD"]<-"red4"
+TempCol[TempCol=="LR EE + SD"]<-rgb(255,255,0, maxColorValue = 255)
 
-TempCol[TempCol=="HR NIL"]<-"green3"
+TempCol[TempCol=="HR NIL"]<-rgb(0,192,0, maxColorValue = 255)
 #TempCol[TempCol=="HR EC"]<-"forestgreen"
-TempCol[TempCol=="HR EE"]<-"darkgreen"
-TempCol[TempCol=="LR NIL"]<-"red1"
+TempCol[TempCol=="HR EE"]<-rgb(15,153,178, maxColorValue = 255)
+TempCol[TempCol=="LR NIL"]<-rgb(255,0,0, maxColorValue = 255)
 #TempCol[TempCol=="LR EC"]<-"red3"
-TempCol[TempCol=="LR EE"]<-"red4"
+TempCol[TempCol=="LR EE"]<-rgb(255,255,0, maxColorValue = 255)
 
 #to reuse older formatting code:
 Data$LineColor<-TempCol
@@ -1415,6 +1437,13 @@ for(i in DataColumnsForBoxplots_AllGroups){
          ylab=YLabelsForBoxplots_AllGroups[i-9], 
          xlab=YLabelsForBoxplots_AllGroups[j-9])
     
+    #Makes the graph background grey
+    rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = "grey")
+    #Replots plot over grey background
+    points(Data[,i]~Data[,j], col=Data$LineColor, pch=Data$TreatmentPch, cex.lab=1.3, 
+           ylab=YLabelsForBoxplots_AllGroups[i-9], 
+           xlab=YLabelsForBoxplots_AllGroups[j-9])
+    
     #LRmodel<-lm(bLRData[,i]~bLRData[,j], data=bLRData)
     #abline(LRmodel, col="red3", lwd=1.5)
     
@@ -1432,6 +1461,12 @@ for(i in DataColumnsForBoxplots_AllGroups){
     pdf(paste("Scatterplot_", colnames(Data)[k], "vs", colnames(Data)[i], ".pdf", sep=""), width=6, height=6)
     
     plot(Data[,k]~Data[,i], col=Data$LineColor, pch=Data$TreatmentPch, cex.lab=1.3,
+         ylab=YLabelsForBoxplots_Proteoglycans[k-90], 
+         xlab=YLabelsForBoxplots_AllGroups[i-9])
+    #Makes the graph background grey
+    rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = "grey")
+    #Replots plot over grey background
+    points(Data[,k]~Data[,i], col=Data$LineColor, pch=Data$TreatmentPch, cex.lab=1.3,
          ylab=YLabelsForBoxplots_Proteoglycans[k-90], 
          xlab=YLabelsForBoxplots_AllGroups[i-9])
     
