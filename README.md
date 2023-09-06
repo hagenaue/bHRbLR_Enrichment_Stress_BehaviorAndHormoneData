@@ -1,4 +1,4 @@
-# Code Repository: Angela_HRLR_StressEnrichData
+# Code Repository: bHRbLR_Enrichment_Stress_BehaviorAndHormoneData
 
 This repository includes the code for the analysis of behavioral and hormonal data within the publication "Adolescent social and environmental enrichment produces long-term increases in social resilience in a genetic rodent model of stress vulnerability: Impact on behavior, circulating hormones, and brain gene expression" by *Angela M. O'Connor, *Megan H. Hagenauer, Liam Cannon Thew Forrester, Pamela Patterson, Keiko Arakawa, Huzefa Khalil, Evelyn R. Richardson, Elaine K. Hebda-Bauer, Farizah I. Rob, Yusra Sannah, Stanley J. Watson, Jr., Huda Akil. (DOI: TBA)
 
@@ -6,10 +6,10 @@ Contributors to this repository include Megan H. Hagenauer (ORCID: 0000-0002-371
 This work was completed at the University of Michigan between 10/2019-09/2023.
 
 The input dataset for this code can be found in the respository here:
-https://github.com/hagenaue/Angela_HRLR_StressEnrichData/blob/master/HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_OFSDScoresFixed_FixedFormatIDs_TimeOnTop_forFullBehavior2.csv
+https://github.com/hagenaue/bHRbLR_Enrichment_Stress_BehaviorAndHormoneData/blob/master/HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_OFSDScoresFixed_FixedFormatIDs_TimeOnTop_forFullBehavior2.csv
 
 Or the full Rproject can be downloaded from the repository here:
-https://github.com/hagenaue/Angela_HRLR_StressEnrichData/blob/master/Angela_HRLR_StressEnrichData.Rproj
+https://github.com/hagenaue/bHRbLR_Enrichment_Stress_BehaviorAndHormoneData/blob/master/Angela_HRLR_StressEnrichData.Rproj
 
 The behavioral and hormonal data used in this analysis will also be released on Figshare (DOI: 10.6084/m9.figshare.24085524) with detailed variable definitions and metadata. 
 
@@ -30,7 +30,7 @@ bHR=bred High Responder rat line - sometimes just called HR in the code
 *******************
 
 Additional code files that represent analyses that were not included in this publication are located in the "NotUsedInPaper" folder:
-https://github.com/hagenaue/Angela_HRLR_StressEnrichData/tree/134ffc13e0d8741e647e1c62af2697fb3c1bf149/NotUsedInPaper
+https://github.com/hagenaue/bHRbLR_Enrichment_Stress_BehaviorAndHormoneData/tree/134ffc13e0d8741e647e1c62af2697fb3c1bf149/NotUsedInPaper
 
 These analyses include:
 1) Analyses of ultrasonic vocalization data (which we eventually realized was recorded incorrectly - 10x differences in gain)
