@@ -13,15 +13,28 @@ https://github.com/hagenaue/Angela_HRLR_StressEnrichData/blob/master/Angela_HRLR
 
 The behavioral and hormonal data used in this analysis will also be released on Figshare (DOI: 10.6084/m9.figshare.24085524) with detailed variable definitions and metadata. 
 
-The analysis code files are numbered based on the order that they were run.
+The analysis code files are numbered based on the order that they were run (#01-12). Occassionally analyses/plots were updated in response to coauthor requests or new formatting requirements. These changes are often noted in the code documents themselves, but sometimes led to a new code document for the same goal. In those cases, the updated code document will have the same number (e.g., #05). 
+
+There are several naming conditions in the code file that differ from what was used in the final paper (and Figshare data release):
+
+Adolescent Enrichment:
+EE=Social and Environmental ("Enhanced) Enrichment - sometimes just referred to as environmental enrichment in the code
+SE=Social Enrichment - referred to as EC or "cage enrichment" in the code
+NIL=Standard Housing 
+
+Bred Line:
+bLR=bred Low Responder rat line - sometimes just called LR in the code
+bHR=bred High Responder rat line - sometimes just called HR in the code
 
 
+*******************
 
 Additional code files that represent analyses that were not included in this publication are located in the "NotUsedInPaper" folder:
 https://github.com/hagenaue/Angela_HRLR_StressEnrichData/tree/134ffc13e0d8741e647e1c62af2697fb3c1bf149/NotUsedInPaper
+
 These analyses include:
-1) Analyses of the ultrasonic vocalization data (which we eventually discovered was recorded incorrectly)
-2) Detailed analyses of the open field habituation data (which we realized cannot be interpreted as usual in terms of exploration/anxiety because we used a non-standard protocol in which the rats were placed in the center at start of the test, so anxious animals tended to freeze there).
+1) Analyses of ultrasonic vocalization data (which we eventually realized was recorded incorrectly - 10x differences in gain)
+2) Detailed analyses of the open field habituation data (which we realized cannot be interpreted as usual in terms of exploration/anxiety because we used a non-standard protocol in which the rats were placed in the center at start of the test causing anxious animals to sometimes freeze in the center instead of showing traditional thigmotaxis).
 3) Analyses of the subset of animals that provided tissue for later proteoglycan immunocytochemistry analyses (separate publication, in prep).
 
 
