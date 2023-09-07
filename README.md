@@ -5,7 +5,7 @@ This repository includes the code for the analysis of behavioral and hormonal da
 Contributors to this repository include Megan H. Hagenauer (ORCID: 0000-0002-3715-9475), Liam Cannon Thew Forrester (ORCID: 0000-0003-4101-0902), and Evelyn R. Richardson (ORCID: 0000-0002-3473-8201).
 This work was completed at the University of Michigan between 10/2019-09/2023.
 
-The input dataset for this code can be found in the respository here:
+The input dataset for this code can be found in the repository here:
 https://github.com/hagenaue/bHRbLR_Enrichment_Stress_BehaviorAndHormoneData/blob/master/HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_OFSDScoresFixed_FixedFormatIDs_TimeOnTop_forFullBehavior2.csv
 
 Or the full Rproject can be downloaded from the repository here:
