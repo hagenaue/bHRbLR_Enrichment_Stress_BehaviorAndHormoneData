@@ -5,6 +5,8 @@ This repository includes the code for the analysis of behavioral and hormonal da
 Contributors to this repository include Megan H. Hagenauer (ORCID: 0000-0002-3715-9475), Liam Cannon Thew Forrester (ORCID: 0000-0003-4101-0902), and Evelyn R. Richardson (ORCID: 0000-0002-3473-8201).
 This work was completed at the University of Michigan between 10/2019-09/2023.
 
+## Input: 
+
 The input dataset for this code can be found in the repository here:
 https://github.com/hagenaue/bHRbLR_Enrichment_Stress_BehaviorAndHormoneData/blob/master/HRLR_EE_Stress_AllBehavData_forR_withNewCORTOxytIL6_SI_OFSDScoresFixed_FixedFormatIDs_TimeOnTop_forFullBehavior2.csv
 
@@ -12,6 +14,8 @@ Or the full Rproject can be downloaded from the repository here:
 https://github.com/hagenaue/bHRbLR_Enrichment_Stress_BehaviorAndHormoneData/blob/master/Angela_HRLR_StressEnrichData.Rproj
 
 The behavioral and hormonal data used in this analysis will also be released on Figshare (DOI: 10.6084/m9.figshare.24085524) with detailed variable definitions and metadata. 
+
+## Analysis Code & Usage Notes:
 
 The analysis code files are numbered based on the order that they were run (#01-12). Occassionally analyses/plots were updated in response to coauthor requests or new formatting requirements. These changes are often noted in the code documents themselves, but sometimes led to a new code document for the same goal. In those cases, the updated code document will have the same number (e.g., #05). 
 
@@ -28,6 +32,8 @@ bHR=bred High Responder rat line - sometimes just called HR in the code
 
 
 *******************
+
+## Not Used In Paper:
 
 Additional code files that represent analyses that were not included in this publication are located in the "NotUsedInPaper" folder:
 https://github.com/hagenaue/bHRbLR_Enrichment_Stress_BehaviorAndHormoneData/tree/134ffc13e0d8741e647e1c62af2697fb3c1bf149/NotUsedInPaper
