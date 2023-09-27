@@ -1,6 +1,6 @@
 # Code Repository: bHRbLR_Enrichment_Stress_BehaviorAndHormoneData
 
-This repository includes the code for the analysis of behavioral and hormonal data within the publication "Adolescent social and environmental enrichment produces long-term increases in social resilience in a genetic rodent model of stress vulnerability: Impact on behavior, circulating hormones, and brain gene expression" by *Angela M. O'Connor, *Megan H. Hagenauer, Liam Cannon Thew Forrester, Pamela Maras, Keiko Arakawa, Huzefa Khalil, Evelyn R. Richardson, Elaine K. Hebda-Bauer, Farizah I. Rob, Yusra Sannah, Stanley J. Watson, Jr., Huda Akil. (DOI: TBA)
+This repository includes the code for the analysis of behavioral and hormonal data within the publication "Adolescent environmental enrichment induces social resilience and alters neural gene expression in a selectively bred rodent model with anxious phenotype" by *Angela M. O'Connor, *Megan H. Hagenauer, Liam Cannon Thew Forrester, Pamela Maras, Keiko Arakawa, Huzefa Khalil, Evelyn R. Richardson, Elaine K. Hebda-Bauer, Farizah I. Rob, Yusra Sannah, Stanley J. Watson, Jr., Huda Akil. (DOI: TBA)
 
 Contributors to this repository include Megan H. Hagenauer (ORCID: 0000-0002-3715-9475), Liam Cannon Thew Forrester (ORCID: 0000-0003-4101-0902), and Evelyn R. Richardson (ORCID: 0000-0002-3473-8201).
 This work was completed at the University of Michigan between 10/2019-09/2023.
@@ -22,8 +22,8 @@ The analysis code files are numbered based on the order that they were run (#01-
 There are several naming conditions in the code file that differ from what was used in the final paper (and Figshare data release):
 
 Adolescent Enrichment:
-EE=Social and Environmental ("Enhanced) Enrichment - sometimes just referred to as environmental enrichment in the code
-SE=Social Enrichment - referred to as EC or "cage enrichment" in the code
+EE=Enhanced Enrichment - sometimes just referred to as environmental enrichment in the code
+SE=Simple Enrichment - referred to as EC or "cage enrichment" in the code
 NIL=Standard Housing 
 
 Bred Line:
