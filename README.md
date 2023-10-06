@@ -1,6 +1,7 @@
 # Code Repository: bHRbLR_Enrichment_Stress_BehaviorAndHormoneData
 
-This repository includes the code for the analysis of behavioral and hormonal data within the publication "Adolescent environmental enrichment induces social resilience and alters neural gene expression in a selectively bred rodent model with anxious phenotype" by *Angela M. O'Connor, *Megan H. Hagenauer, Liam Cannon Thew Forrester, Pamela Maras, Keiko Arakawa, Elaine K. Hebda-Bauer, Huzefa Khalil, Evelyn R. Richardson, Farizah I. Rob, Yusra Sannah, Stanley J. Watson, Jr., Huda Akil. (DOI: TBA)
+This repository includes the code for the analysis of behavioral and hormonal data within the publication "Adolescent environmental enrichment induces social resilience and alters neural gene expression in a selectively bred rodent model with anxious phenotype" by *Angela M. O'Connor, *Megan H. Hagenauer, Liam Cannon Thew Forrester, Pamela Maras, Keiko Arakawa, Elaine K. Hebda-Bauer, Huzefa Khalil, Evelyn R. Richardson, Farizah I. Rob, Yusra Sannah, Stanley J. Watson, Jr., Huda Akil.
+Preprint: https://www.biorxiv.org/content/10.1101/2023.10.03.560702v1.article-info (DOI: https://doi.org/10.1101/2023.10.03.560702)
 
 Contributors to this repository include Megan H. Hagenauer (ORCID: 0000-0002-3715-9475), Liam Cannon Thew Forrester (ORCID: 0000-0003-4101-0902), and Evelyn R. Richardson (ORCID: 0000-0002-3473-8201).
 This work was completed at the University of Michigan between 10/2019-09/2023.
